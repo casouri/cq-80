@@ -69,8 +69,9 @@ BLEDis bledis;
 /* BLE keyboard object. */
 BLEHidAdafruit blehid;
 
-/* Counter for various timers. */
-int resetJustClickedTimer = 0;
+/* https://github.com/adafruit/Adafruit_nRF52_Arduino/blob/527e62d5f480c3f7f529bba06d88cd165de14626/cores/nRF5/utility/SoftwareTimer.h */
+SoftwareTimer frontLampBlinkTimer;
+SoftwareTimer checkBatteryTimer;
 
 void setup()
 {
@@ -102,6 +103,11 @@ void setup()
 
   blehid.begin();
   advertize();
+
+  frontLampBlinkTimer.begin(2000, frontLampBlinkRoutine);
+  frontLampBlinkTimer.start();
+  checkBatteryTimer.begin(60 * 60 * 1000, checkBatteryRoutine);
+  checkBatteryTimer.start();
 }
 
 void loop ()
@@ -183,7 +189,6 @@ void loop ()
           }
       }
     }
-
   delay(60);
 }
 
@@ -354,4 +359,37 @@ void pressMediaKey(BLEHidAdafruit blehid, uint16_t code)
   blehid.consumerKeyPress(code);
   delay(25);
   blehid.consumerKeyRelease();
+}
+
+float readBatteryVoltage()
+{
+  /* REF: https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/nrf52-adc */
+  /* Default ADC range is 3.6V, resolution 10 bits. */
+  const float vbatScale = 3600.0 / 1024.0;
+  /* 2M + 0.806M voltage divider on VBAT = (2M / (0.806M + 2M)) =
+     0.71275837F, the inverse of that is 1.403F. */
+  const float vbatCompensation = 1.403F;
+  /* Hopefully compiler can compile these away? */
+  return analogRead(31) * (vbatScale * vbatCompensation);
+}
+
+void frontLampBlinkRoutine(TimerHandle_t _handle)
+{
+  /* Timer examples: https://github.com/adafruit/Adafruit_nRF52_Arduino/pull/262/commits/63b43fc2ec1650398fdc0e104479d85706af844a */
+  digitalToggle(lightPin[1]);
+}
+
+/* Blink front lamp when voltage drops below 3.3V (below 10%) and
+   stops blinking when voltages raises above 4.1V (almost full). */
+void checkBatteryRoutine(TimerHandle_t _handle)
+{
+  float voltage = readBatteryVoltage();
+  if (voltage < 3300)
+    {
+      frontLampBlinkTimer.start();
+    }
+  if (voltage > 4100)
+    {
+      frontLampBlinkTimer.stop();
+    }
 }
