@@ -51,16 +51,7 @@ JoyPos posHistory[3] = {JoyPosCenter, JoyPosCenter, JoyPosCenter};
 
 /* Bitmaps for controlling each light, in the order of top light, front
    lamp, head light, side lights. */
-/* Records the state of each light, true means on, false means off. */
-int lightState[4] = { LOW, LOW, LOW, LOW };
-/* How many blinks left for each light. */
-int blinkCounter[4] = { 0, 0, 0, 0 };
-/* Interval between blink in ms. */
-unsigned long blinkOnInterval[4] = { 120, 120, 120, 120 };
-unsigned long blinkOffInterval[4] = { 600, 600, 600, 600 };
-/* Last time the light changed state. */
-unsigned long lastLightChange[4] = { 0, 0, 0, 0 };
-/* Pin for controlling each LED. */
+/* The time when blinking stated. */
 /* const int lightPin[4] = { 16, 15, 7, 11 }; */
 const int lightPin[4] = { led1Pin, led2Pin, 7, 11 };
 
@@ -68,11 +59,15 @@ const int lightPin[4] = { led1Pin, led2Pin, 7, 11 };
 BLEDis bledis;
 /* BLE keyboard object. */
 BLEHidAdafruit blehid;
+const int advertizeFastModeTimeout = 30;
+const int advertizeTimeout = 120;
 
 /* https://github.com/adafruit/Adafruit_nRF52_Arduino/blob/527e62d5f480c3f7f529bba06d88cd165de14626/cores/nRF5/utility/SoftwareTimer.h */
 SoftwareTimer frontLampBlinkTimer;
 SoftwareTimer checkBatteryTimer;
 SoftwareTimer mainLoopTimer;
+SoftwareTimer topLightBlinkTimer;
+unsigned long topLightBlinkStart;
 
 void setup()
 {
@@ -109,6 +104,7 @@ void setup()
   frontLampBlinkTimer.start();
   checkBatteryTimer.begin(60 * 60 * 1000, checkBatteryRoutine);
   checkBatteryTimer.start();
+  topLightBlinkTimer.begin(600, topLightBlinkRoutine);
   mainLoopTimer.begin(60, mainLoop);
   mainLoopTimer.start();
   suspendLoop();
@@ -132,10 +128,10 @@ void mainLoop(TimerHandle_t _handle)
     case EventClickHold:
       if (!Bluefruit.connected())
         {
-          Bluefruit.Advertising.start(120);
-          /* Keep blinking before we make a connection or time out.
-             120 blinks should give us roughly 120s. */
-          blinkCounter[0] = 120;
+          Bluefruit.Advertising.start(advertizeTimeout);
+          topLightBlinkTimer.setPeriod(300);
+          topLightBlinkStart = millis();
+          topLightBlinkTimer.start();
         }
       break;
     }
@@ -143,7 +139,8 @@ void mainLoop(TimerHandle_t _handle)
   if (Bluefruit.connected())
     {
       /* Turn off blinking. */
-      blinkCounter[0] = 0;
+      topLightBlinkTimer.stop();
+      digitalWrite(lightPin[0], LOW);
 
       /* Process joystick. */
       int x = analogRead(xPin) - joyRange;
@@ -167,33 +164,6 @@ void mainLoop(TimerHandle_t _handle)
             }
           lastPos = pos;
         }
-    }
-
-  /* LED. */
-  unsigned long currentTime = millis();
-  for (int idx=0; idx < 4; idx++)
-    {
-      if (lightState[idx] == HIGH)
-        {
-          if (currentTime - lastLightChange[idx]
-              >= blinkOnInterval[idx])
-            {
-              lightState[idx] = LOW;
-              digitalWrite(lightPin[idx], LOW);
-              lastLightChange[idx] = currentTime;
-            }
-        }
-      else {
-        if (blinkCounter[idx] > 0
-            && currentTime - lastLightChange[idx]
-            >= blinkOffInterval[idx])
-          {
-            lightState[idx] = HIGH;
-            digitalWrite(lightPin[idx], HIGH);
-            blinkCounter[idx]--;
-            lastLightChange[idx] = currentTime;
-          }
-      }
     }
 }
 
@@ -352,9 +322,9 @@ void advertize(void)
   /* Unit is 0.625ms. */
   Bluefruit.Advertising.setInterval(32, 2056);
   /* Set number of seconds in fast mode. */
-  Bluefruit.Advertising.setFastTimeout(30);
+  Bluefruit.Advertising.setFastTimeout(advertizeFastModeTimeout);
   /* Start advertising and stop after n seconds, 0 = never stop. */
-  Bluefruit.Advertising.start(120);
+  Bluefruit.Advertising.start(advertizeTimeout);
 }
 
 /* Press and release usage_code. For whatever reason consumerReport
@@ -396,5 +366,23 @@ void checkBatteryRoutine(TimerHandle_t _handle)
   if (voltage > 4100)
     {
       frontLampBlinkTimer.stop();
+    }
+}
+
+/* Blink top light, if fast mode is past, blink slower, if advertize
+   timeout is past, stop blinking. */
+void topLightBlinkRoutine(TimerHandle_t _handle)
+{
+  digitalToggle(lightPin[0]);
+  unsigned long currentTime = millis();
+  if (currentTime - topLightBlinkStart
+      > advertizeFastModeTimeout * 1000)
+    {
+      topLightBlinkTimer.setPeriod(1000);
+    }
+  if (currentTime - topLightBlinkStart > advertizeTimeout * 1000)
+    {
+      digitalWrite(lightPin[0], LOW);
+      topLightBlinkTimer.stop();
     }
 }
