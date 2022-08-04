@@ -102,7 +102,7 @@ void setup()
 
   frontLampBlinkTimer.begin(2000, frontLampBlinkRoutine);
   frontLampBlinkTimer.start();
-  checkBatteryTimer.begin(60 * 60 * 1000, checkBatteryRoutine);
+  checkBatteryTimer.begin(1000, checkBatteryRoutine);
   checkBatteryTimer.start();
   topLightBlinkTimer.begin(600, topLightBlinkRoutine);
   mainLoopTimer.begin(60, mainLoop);
