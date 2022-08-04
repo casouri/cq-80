@@ -25,17 +25,20 @@ const int joyCenterRange = joyRange / 2;
 JoyPos lastPos = JoyPosCenter;
 JoyPos posHistory[3] = {JoyPosCenter, JoyPosCenter, JoyPosCenter};
 
+/* Default ADC range is 3.6V, resolution 10 bits. */
+const float vbatScale = 3600.0 / 1024.0;
+/* 2M + 0.806M voltage divider on VBAT = (2M / (0.806M + 2M)) =
+   0.71275837F, the inverse of that is 1.403F. */
+const float vbatCompensation = 1.403F;
+
 void setup()
 {
   Serial.begin(115200);
-
-  /* analogReadResolution(12); */
-  /* analogReference(AR_INTERNAL); */
 }
 
 void loop()
 {
-  float vbat = analogRead(31) * 2 * 3.3 / 1024;
+  float vbat = analogRead(31) * (vbatScale * vbatCompensation);
   Serial.print("VBat: " ); Serial.println(vbat);
   delay(1000);
 }
