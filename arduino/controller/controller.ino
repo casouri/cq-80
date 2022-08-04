@@ -72,6 +72,7 @@ BLEHidAdafruit blehid;
 /* https://github.com/adafruit/Adafruit_nRF52_Arduino/blob/527e62d5f480c3f7f529bba06d88cd165de14626/cores/nRF5/utility/SoftwareTimer.h */
 SoftwareTimer frontLampBlinkTimer;
 SoftwareTimer checkBatteryTimer;
+SoftwareTimer mainLoopTimer;
 
 void setup()
 {
@@ -108,9 +109,14 @@ void setup()
   frontLampBlinkTimer.start();
   checkBatteryTimer.begin(60 * 60 * 1000, checkBatteryRoutine);
   checkBatteryTimer.start();
+  mainLoopTimer.begin(60, mainLoop);
+  mainLoopTimer.start();
+  suspendLoop();
 }
 
-void loop ()
+void loop() {}
+
+void mainLoop(TimerHandle_t _handle)
 {
   /* Process click. */
   switch (detectClickEvent())
@@ -189,7 +195,6 @@ void loop ()
           }
       }
     }
-  delay(60);
 }
 
 /* Return the appropriate consumer key given the event. Returns 0 for
