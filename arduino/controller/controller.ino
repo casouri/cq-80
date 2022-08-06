@@ -41,6 +41,7 @@ enum Event {
   EventVolumeUp,
   EventVolumeDown,
   EventRandom,
+  EventLight,
   EventClick,
   EventClickHold,
   EventNull,
@@ -50,6 +51,13 @@ enum ClickState {
   ClickState0,
   ClickStatePressed,
   ClickStateHoldDetected,
+};
+
+enum LightState {
+  LightStateOff,
+  LightStateSide,
+  LightStateHead,
+  LightStateBoth,
 };
 
 const int led1Pin = 17;
@@ -77,7 +85,8 @@ JoyPos posHistory[3] = {JoyPosCenter, JoyPosCenter, JoyPosCenter};
    lamp, head light, side lights. */
 /* The time when blinking stated. */
 /* const int lightPin[4] = { 16, 15, 7, 11 }; */
-const int lightPin[4] = { led1Pin, led2Pin, 7, 11 };
+const int lightPin[4] = { 16, led2Pin, led1Pin, led2Pin };
+LightState lightState = LightStateOff;
 
 /* BLE device information object. */
 BLEDis bledis;
@@ -178,17 +187,24 @@ void mainLoop(TimerHandle_t _handle)
         {
           pushNewPos(pos, posHistory);
           Event event = detectEvent(posHistory);
-          int mediaCode = eventToMediaCode(event);
-          if (mediaCode != 0)
+          if (event == EventLight)
             {
-              /* Send media key. */
-              blehid.consumerKeyPress(mediaCode);
-              delay(15);
-              blehid.consumerKeyRelease();
+              toggleLight();
             }
+          else {
+            int mediaCode = eventToMediaCode(event);
+            if (mediaCode != 0)
+              {
+                /* Send media key. */
+                blehid.consumerKeyPress(mediaCode);
+                delay(5);
+                blehid.consumerKeyRelease();
+              }
+          }
           lastPos = pos;
         }
     }
+  delay(100);
 }
 
 /* Return the appropriate consumer key given the event. Returns 0 for
@@ -266,7 +282,7 @@ Event detectEvent(JoyPos posHistory[3])
     return EventForward;
   /* Tilt up. */
   if (p0 == JoyPosCenter && p1 == JoyPosUp && p2 == JoyPosCenter)
-    return EventRandom;
+    return EventLight;
   /* Tilt down. */
   if (p0 == JoyPosCenter && p1 == JoyPosDown && p2 == JoyPosCenter)
     return EventPlayPause;
@@ -408,5 +424,28 @@ void topLightBlinkRoutine(TimerHandle_t _handle)
     {
       digitalWrite(lightPin[0], LOW);
       topLightBlinkTimer.stop();
+    }
+}
+
+/* Toggle between each light layout. */
+void toggleLight()
+{
+  switch (lightState)
+    {
+    case LightStateOff:
+      lightState = LightStateSide;
+      digitalWrite(lightPin[2], LOW);
+      digitalWrite(lightPin[3], HIGH);
+      break;
+    case LightStateSide:
+      lightState = LightStateHead;
+      digitalWrite(lightPin[2], HIGH);
+      digitalWrite(lightPin[3], LOW);
+      break;
+    case LightStateHead:
+      lightState = LightStateOff;
+      digitalWrite(lightPin[2], LOW);
+      digitalWrite(lightPin[3], LOW);
+      break;
     }
 }
