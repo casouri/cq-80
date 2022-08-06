@@ -1,3 +1,27 @@
+/* This is the program for music controller functionality.
+
+Actions:
+ - Press joystick: toggle head and side light.
+ - Press and hold joystick for 1s: If not paired, start pairing, top
+   light blinks fast for 30 seconds (fast mode), then slow for 90s
+   (slow mode).
+ - Tilt up:
+ - Tilt down: play/pause
+ - Tilt left: previous track
+ - Tilt right: next track
+ - Rotate clockwise: volume up
+ - Rotate counter-clockwise: volume down
+
+The program also monitors battery voltage, and when it dips below
+3.3V, front lamp starts blinking, when the voltage rises above 4.1V,
+blinking stops.
+
+The main loop runs every 100ms. This interval is long enough to save
+battery life and short enough to be responsive.
+
+When connection breaks, the program automatically starts re-pairing
+without blinking the top light. */
+
 #include <bluefruit.h>
 
 /* Joystick Position. */
@@ -105,7 +129,7 @@ void setup()
   checkBatteryTimer.begin(1000, checkBatteryRoutine);
   checkBatteryTimer.start();
   topLightBlinkTimer.begin(600, topLightBlinkRoutine);
-  mainLoopTimer.begin(60, mainLoop);
+  mainLoopTimer.begin(100, mainLoop);
   mainLoopTimer.start();
   suspendLoop();
 }
