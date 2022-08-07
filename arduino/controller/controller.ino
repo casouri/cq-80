@@ -35,13 +35,12 @@ enum JoyPos {
 
 /* Controller event. */
 enum Event {
-  EventPlayPause,
-  EventBack,
-  EventForward,
-  EventVolumeUp,
-  EventVolumeDown,
-  EventRandom,
-  EventLight,
+  EventTiltDown,
+  EventTiltUp,
+  EventTiltLeft,
+  EventTiltRight,
+  EventClockwise,
+  EventCounterClockwise,
   EventClick,
   EventClickHold,
   EventNull,
@@ -57,8 +56,22 @@ enum LightState {
   LightStateOff,
   LightStateSide,
   LightStateHead,
-  LightStateBoth,
 };
+
+enum LayoutMode {
+  LayoutModeMusic,
+  LayoutModeStudy,
+};
+
+const int mediaPlayPause = 0xCD;
+const int mediaNext = 0xB5;
+const int mediaPrevious = 0xB6;
+const int mediaVolumeUp = 0xE9;
+const int mediaVolumeDown = 0xEA;
+const int mediaRandom = 0xB9;
+const int mediaSeekForward = 0xC0;
+const int mediaSeekBackward = 0xC1;
+LayoutMode currentMode = LayoutModeMusic;
 
 const int led1Pin = 17;
 const int led2Pin = 19;
@@ -85,7 +98,7 @@ JoyPos posHistory[3] = {JoyPosCenter, JoyPosCenter, JoyPosCenter};
    lamp, head light, side lights. */
 /* The time when blinking stated. */
 /* const int lightPin[4] = { 16, 15, 7, 11 }; */
-const int lightPin[4] = { 16, led2Pin, led1Pin, led2Pin };
+const int lightPin[4] = { led1Pin, led2Pin, led1Pin, led2Pin };
 LightState lightState = LightStateOff;
 
 /* BLE device information object. */
@@ -121,17 +134,17 @@ void setup()
   Bluefruit.setTxPower(4); // 4dBm, 2.5mW, 10m range.
   Bluefruit.setName("CQ-80");
   Bluefruit.setAppearance(BLE_APPEARANCE_GENERIC_REMOTE_CONTROL);
-  /* Set connection interval (min, max) to 60ms. (Unit is 1.25ms).
-     Apple has specific requirements, see advertize().
+  /* Set connection interval (min, max) to 30ms–60ms. (Unit is
+     1.25ms). Apple has specific requirements, see advertize().
   */
-  Bluefruit.Periph.setConnInterval(48, 48);
+  Bluefruit.Periph.setConnInterval(24, 48);
 
   bledis.setManufacturer("Deepsea Metro Inc.");
   bledis.setModel("CQ-80");
   bledis.begin();
 
   blehid.begin();
-  advertize();
+  /* advertize(); */
 
   frontLampBlinkTimer.begin(2000, frontLampBlinkRoutine);
   frontLampBlinkTimer.start();
@@ -153,9 +166,7 @@ void mainLoop(TimerHandle_t _handle)
     case EventClick:
       if (Bluefruit.connected())
         {
-          blehid.consumerKeyPress(205);
-          delay(15);
-          blehid.consumerKeyRelease();
+          flashTopLight(random(1,7));
         }
       break;
     case EventClickHold:
@@ -171,10 +182,6 @@ void mainLoop(TimerHandle_t _handle)
 
   if (Bluefruit.connected())
     {
-      /* Turn off blinking. */
-      topLightBlinkTimer.stop();
-      digitalWrite(lightPin[0], LOW);
-
       /* Process joystick. */
       int x = analogRead(xPin) - joyRange;
       int y = analogRead(yPin) - joyRange;
@@ -187,12 +194,12 @@ void mainLoop(TimerHandle_t _handle)
         {
           pushNewPos(pos, posHistory);
           Event event = detectEvent(posHistory);
-          if (event == EventLight)
+          if (event == EventTiltUp)
             {
               toggleLight();
             }
           else {
-            int mediaCode = eventToMediaCode(event);
+            int mediaCode = eventToMediaCode(event, currentMode);
             if (mediaCode != 0)
               {
                 /* Send media key. */
@@ -209,24 +216,46 @@ void mainLoop(TimerHandle_t _handle)
 
 /* Return the appropriate consumer key given the event. Returns 0 for
    EventNull. */
-int eventToMediaCode(Event event)
+int eventToMediaCode(Event event, LayoutMode mode)
 {
-  switch (event)
+  switch (mode)
     {
-    case EventPlayPause:
-      return 205;
-    case EventBack:
-      return 182;
-    case EventForward:
-      return 181;
-    case EventVolumeUp:
-      return 233;
-    case EventVolumeDown:
-      return 234;
-    case EventRandom:
-      return 185;
-    case EventNull:
-      return 0;
+    case LayoutModeMusic:
+      switch (event)
+        {
+        case EventTiltDown:
+          return mediaPlayPause;
+        case EventTiltLeft:
+          return mediaPrevious;
+        case EventTiltRight:
+          return mediaNext;
+        case EventClockwise:
+          return mediaVolumeUp;
+        case EventCounterClockwise:
+          return mediaVolumeDown;
+        case EventNull:
+          return 0;
+        default:
+          return 0;
+        }
+    case LayoutModeStudy:
+      switch (event)
+        {
+        case EventTiltDown:
+          return mediaPlayPause;
+        case EventTiltLeft:
+          return mediaSeekBackward;
+        case EventTiltRight:
+          return mediaSeekForward;
+        case EventClockwise:
+          return mediaVolumeUp;
+        case EventCounterClockwise:
+          return mediaVolumeDown;
+        case EventNull:
+          return 0;
+        default:
+          return 0;
+        }
     default:
       return 0;
     }
@@ -276,34 +305,34 @@ Event detectEvent(JoyPos posHistory[3])
 
   /* Tilt left. */
   if (p0 == JoyPosCenter && p1 == JoyPosLeft && p2 == JoyPosCenter)
-    return EventBack;
+    return EventTiltLeft;
   /* Tilt right. */
   if (p0 == JoyPosCenter && p1 == JoyPosRight && p2 == JoyPosCenter)
-    return EventForward;
+    return EventTiltRight;
   /* Tilt up. */
   if (p0 == JoyPosCenter && p1 == JoyPosUp && p2 == JoyPosCenter)
-    return EventLight;
+    return EventTiltUp;
   /* Tilt down. */
   if (p0 == JoyPosCenter && p1 == JoyPosDown && p2 == JoyPosCenter)
-    return EventPlayPause;
+    return EventTiltDown;
   /* Clockwise rotation. */
   if (p1 == JoyPosLeft && p2 == JoyPosUp
       || p1 == JoyPosUp && p2 == JoyPosRight
       || p1 == JoyPosRight && p2 == JoyPosDown
       || p1 == JoyPosDown && p2 == JoyPosLeft)
-    return EventVolumeUp;
+    return EventClockwise;
   /* Counter-clockwise rotation. */
   if (p2 == JoyPosLeft && p1 == JoyPosUp
       || p2 == JoyPosUp && p1 == JoyPosRight
       || p2 == JoyPosRight && p1 == JoyPosDown
       || p2 == JoyPosDown && p1 == JoyPosLeft)
-    return EventVolumeDown;
+    return EventCounterClockwise;
   return EventNull;
 }
 
 /* Returns EventClick, EventClickHold, or EventNull. Mutates
    clickState, ClickPressStart, reads clickPin. */
-Event detectClickEvent()
+Event detectClickEvent(void)
 {
   switch (clickState)
     {
@@ -363,20 +392,20 @@ void advertize(void)
   Bluefruit.Advertising.setInterval(32, 2056);
   /* Set number of seconds in fast mode. */
   Bluefruit.Advertising.setFastTimeout(advertizeFastModeTimeout);
+  /* Clean up after advertising stops. */
+  Bluefruit.Advertising.setStopCallback(advertizeStopCallback);
   /* Start advertising and stop after n seconds, 0 = never stop. */
   Bluefruit.Advertising.start(advertizeTimeout);
 }
 
-/* Press and release usage_code. For whatever reason consumerReport
-   function isn't very reliable. */
-void pressMediaKey(BLEHidAdafruit blehid, uint16_t code)
+void advertizeStopCallback(void)
 {
-  blehid.consumerKeyPress(code);
-  delay(25);
-  blehid.consumerKeyRelease();
+  /* Turn off blinking. */
+  topLightBlinkTimer.stop();
+  digitalWrite(lightPin[0], LOW);
 }
 
-float readBatteryVoltage()
+float readBatteryVoltage(void)
 {
   /* REF: https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/nrf52-adc */
   /* Default ADC range is 3.6V, resolution 10 bits. */
@@ -428,7 +457,7 @@ void topLightBlinkRoutine(TimerHandle_t _handle)
 }
 
 /* Toggle between each light layout. */
-void toggleLight()
+void toggleLight(void)
 {
   switch (lightState)
     {
@@ -447,5 +476,16 @@ void toggleLight()
       digitalWrite(lightPin[2], LOW);
       digitalWrite(lightPin[3], LOW);
       break;
+    }
+}
+
+void flashTopLight(int n)
+{
+  for (int count=0; count < n; count++)
+    {
+      digitalWrite(lightPin[0], HIGH);
+      delay(100);
+      digitalWrite(lightPin[0], LOW);
+      delay(100);
     }
 }
