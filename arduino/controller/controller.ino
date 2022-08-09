@@ -56,6 +56,7 @@ enum LightState {
   LightStateOff,
   LightStateSide,
   LightStateHead,
+  LightStateBoth,
 };
 
 enum LayoutMode {
@@ -474,6 +475,11 @@ void toggleLight(void)
       digitalWrite(lightPin[3], LOW);
       break;
     case LightStateHead:
+      lightState = LightStateBoth;
+      digitalWrite(lightPin[2], HIGH);
+      digitalWrite(lightPin[3], HIGH);
+      break;
+    case LightStateBoth:
       lightState = LightStateOff;
       digitalWrite(lightPin[2], LOW);
       digitalWrite(lightPin[3], LOW);
