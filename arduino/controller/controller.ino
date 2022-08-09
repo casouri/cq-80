@@ -404,6 +404,7 @@ void advertize(void)
   Bluefruit.Advertising.setFastTimeout(advertizeFastModeTimeout);
   /* Clean up after advertising stops. */
   Bluefruit.Advertising.setStopCallback(advertizeStopCallback);
+  Bluefruit.Advertising.setStopCallback(advertizeSlowCallback);
   /* Start advertising and stop after n seconds, 0 = never stop. */
   Bluefruit.Advertising.start(advertizeTimeout);
 }
