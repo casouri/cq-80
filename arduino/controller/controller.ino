@@ -115,10 +115,10 @@ const int advertizeTimeout = 120;
 
 /* https://github.com/adafruit/Adafruit_nRF52_Arduino/blob/527e62d5f480c3f7f529bba06d88cd165de14626/cores/nRF5/utility/SoftwareTimer.h */
 SoftwareTimer frontLampBlinkTimer;
+bool frontLampBlinkTimerRunning = false;
 SoftwareTimer checkBatteryTimer;
 SoftwareTimer mainLoopTimer;
 SoftwareTimer topLightBlinkTimer;
-unsigned long topLightBlinkStart;
 
 void setup()
 {
@@ -133,6 +133,8 @@ void setup()
   pinMode(lightPin[2], OUTPUT);
   pinMode(lightPin[3], OUTPUT);
   pinMode(clickPin, INPUT_PULLUP);
+  pinMode(usbPin, INPUT);
+  pinMode(batteryPin, INPUT);
   digitalWrite(lightPin[0], LOW);
   digitalWrite(lightPin[1], LOW);
   digitalWrite(lightPin[2], LOW);
@@ -158,10 +160,9 @@ void setup()
   advertize();
 
   frontLampBlinkTimer.begin(2000, frontLampBlinkRoutine);
-  frontLampBlinkTimer.start();
+  topLightBlinkTimer.begin(600, topLightBlinkRoutine);
   checkBatteryTimer.begin(1000, checkBatteryRoutine);
   checkBatteryTimer.start();
-  topLightBlinkTimer.begin(600, topLightBlinkRoutine);
   mainLoopTimer.begin(100, mainLoop);
   mainLoopTimer.start();
   suspendLoop();
@@ -443,9 +444,9 @@ float readBatteryVoltage(void)
   const float vbatScale = 3600.0 / 1024.0;
   /* 2M + 0.806M voltage divider on VBAT = (2M / (0.806M + 2M)) =
      0.71275837F, the inverse of that is 1.403F. */
-  const float vbatCompensation = 1.403F;
+  const float vbatCompensation = 1.403;
   /* Hopefully compiler can compile these away? */
-  return analogRead(31) * (vbatScale * vbatCompensation);
+  return analogRead(batteryPin) * (vbatScale * vbatCompensation);
 }
 
 void frontLampBlinkRoutine(TimerHandle_t _handle)
@@ -460,27 +461,34 @@ void checkBatteryRoutine(TimerHandle_t _handle)
 {
   float batteryVoltage = readBatteryVoltage();
   float usbVoltage = analogRead(usbPin);
-  if (usbVoltage > 900) /* Magic number. */
+  /* Magic number, connected: 960+, disconnected: ~350. */
+  bool charging = usbVoltage > 900 ? true : false;
+  bool blink = false;
+  bool output = LOW;
+  if (!charging && batteryVoltage < 3300)
     {
-      frontLampBlinkTimer.stop();
-      digitalWrite(lightPin[1], HIGH);
-      return;
+      blink = true;
     }
-  if (batteryVoltage < 3300)
+  else if (charging && batteryVoltage < 4100)
     {
-      frontLampBlinkTimer.start();
-      return;
+      blink = false;
+      output = HIGH;
     }
-  if (batteryVoltage > 4100)
+  else
     {
-      frontLampBlinkTimer.stop();
-      /* We don’t return after this check because we still want to run
-         the next check. */
+      blink = false;
+      output = LOW;
     }
-  if (usbVoltage < 800)
+  if (blink != frontLampBlinkTimerRunning)
     {
-      digitalWrite(lightPin[1], LOW);
+      if (frontLampBlinkTimerRunning)
+        frontLampBlinkTimer.stop();
+      else
+        frontLampBlinkTimer.start();
+      frontLampBlinkTimerRunning = !frontLampBlinkTimerRunning;
     }
+  if (!blink)
+    digitalWrite(lightPin[1], output);
 }
 
 /* Toggle between each light layout. */
