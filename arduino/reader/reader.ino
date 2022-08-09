@@ -39,7 +39,9 @@ void setup()
 void loop()
 {
   float vbat = analogRead(31) * (vbatScale * vbatCompensation);
+  float usb = analogRead(4);
   Serial.print("VBat: " ); Serial.println(vbat);
+  Serial.print("USB: " ); Serial.println(usb);
   delay(1000);
 }
 
