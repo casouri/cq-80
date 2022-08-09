@@ -98,8 +98,7 @@ JoyPos posHistory[3] = {JoyPosCenter, JoyPosCenter, JoyPosCenter};
 /* Bitmaps for controlling each light, in the order of top light, front
    lamp, head light, side lights. */
 /* The time when blinking stated. */
-/* const int lightPin[4] = { 16, 15, 7, 11 }; */
-const int lightPin[4] = { led1Pin, led2Pin, led1Pin, led2Pin };
+const int lightPin[4] = { 16, 15, 7, 11 };
 LightState lightState = LightStateOff;
 
 /* We connect USB to A2 to detect if usb port is plugged in. */
