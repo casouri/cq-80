@@ -29,11 +29,13 @@ JoyPos posHistory[3] = {JoyPosCenter, JoyPosCenter, JoyPosCenter};
 const float vbatScale = 3600.0 / 1024.0;
 /* 2M + 0.806M voltage divider on VBAT = (2M / (0.806M + 2M)) =
    0.71275837F, the inverse of that is 1.403F. */
-const float vbatCompensation = 1.403F;
+const float vbatCompensation = 1.403;
 
 void setup()
 {
   Serial.begin(115200);
+  pinMode(31, INPUT);
+  pinMode(4, INPUT);
 }
 
 void loop()
