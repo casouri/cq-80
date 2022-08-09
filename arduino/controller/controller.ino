@@ -102,6 +102,11 @@ JoyPos posHistory[3] = {JoyPosCenter, JoyPosCenter, JoyPosCenter};
 const int lightPin[4] = { led1Pin, led2Pin, led1Pin, led2Pin };
 LightState lightState = LightStateOff;
 
+/* We connect USB to A2 to detect if usb port is plugged in. */
+const int usbPin = 4;
+/* This pin is used to measure battery voltage. */
+const int batteryPin = 31;
+
 /* BLE device information object. */
 BLEDis bledis;
 /* BLE keyboard object. */
@@ -129,6 +134,10 @@ void setup()
   pinMode(lightPin[2], OUTPUT);
   pinMode(lightPin[3], OUTPUT);
   pinMode(clickPin, INPUT_PULLUP);
+  digitalWrite(lightPin[0], LOW);
+  digitalWrite(lightPin[1], LOW);
+  digitalWrite(lightPin[2], LOW);
+  digitalWrite(lightPin[3], LOW);
 
   Bluefruit.begin();
   /* Turn off the blue led that lights up when auto connection is
@@ -430,14 +439,28 @@ void frontLampBlinkRoutine(TimerHandle_t _handle)
    stops blinking when voltages raises above 4.1V (almost full). */
 void checkBatteryRoutine(TimerHandle_t _handle)
 {
-  float voltage = readBatteryVoltage();
-  if (voltage < 3300)
-    {
-      frontLampBlinkTimer.start();
-    }
-  if (voltage > 4100)
+  float batteryVoltage = readBatteryVoltage();
+  float usbVoltage = analogRead(usbPin);
+  if (usbVoltage > 900) /* Magic number. */
     {
       frontLampBlinkTimer.stop();
+      digitalWrite(lightPin[1], HIGH);
+      return;
+    }
+  if (batteryVoltage < 3300)
+    {
+      frontLampBlinkTimer.start();
+      return;
+    }
+  if (batteryVoltage > 4100)
+    {
+      frontLampBlinkTimer.stop();
+      /* We don’t return after this check because we still want to run
+         the next check. */
+    }
+  if (usbVoltage < 800)
+    {
+      digitalWrite(lightPin[1], LOW);
     }
 }
 
