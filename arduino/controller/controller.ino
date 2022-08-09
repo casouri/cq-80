@@ -155,7 +155,7 @@ void setup()
   bledis.begin();
 
   blehid.begin();
-  /* advertize(); */
+  advertize();
 
   frontLampBlinkTimer.begin(2000, frontLampBlinkRoutine);
   frontLampBlinkTimer.start();
@@ -184,8 +184,7 @@ void mainLoop(TimerHandle_t _handle)
       if (!Bluefruit.connected())
         {
           Bluefruit.Advertising.start(advertizeTimeout);
-          topLightBlinkTimer.setPeriod(250);
-          topLightBlinkTimer.start();
+          advertizeStartCallback();
         }
       break;
     }
@@ -406,8 +405,15 @@ void advertize(void)
   /* Clean up after advertising stops. */
   Bluefruit.Advertising.setStopCallback(advertizeStopCallback);
   Bluefruit.Advertising.setStopCallback(advertizeSlowCallback);
+  /* Bluefruit.setDisconnectCallback(advertizeStartCallback); */
   /* Start advertising and stop after n seconds, 0 = never stop. */
   Bluefruit.Advertising.start(advertizeTimeout);
+}
+
+void advertizeStartCallback(void)
+{
+  topLightBlinkTimer.setPeriod(250);
+  topLightBlinkTimer.start();
 }
 
 void advertizeStopCallback(void)
