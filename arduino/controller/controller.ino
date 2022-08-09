@@ -190,16 +190,17 @@ void mainLoop(TimerHandle_t _handle)
       break;
     }
 
+  /* Process joystick. Always light up top light regardless bluetooth
+     connection. */
+  int x = analogRead(xPin) - joyRange;
+  int y = analogRead(yPin) - joyRange;
+  JoyPos pos = readJoyPos(x, y, joyCenterRange);
+  if (pos != JoyPosCenter)
+    digitalWrite(lightPin[0], HIGH);
+  else
+    digitalWrite(lightPin[0], LOW);
   if (Bluefruit.connected())
     {
-      /* Process joystick. */
-      int x = analogRead(xPin) - joyRange;
-      int y = analogRead(yPin) - joyRange;
-      JoyPos pos = readJoyPos(x, y, joyCenterRange);
-      if (pos != JoyPosCenter)
-        digitalWrite(lightPin[0], HIGH);
-      else
-        digitalWrite(lightPin[0], LOW);
       if (pos != lastPos)
         {
           pushNewPos(pos, posHistory);
