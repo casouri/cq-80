@@ -184,8 +184,7 @@ void mainLoop(TimerHandle_t _handle)
       if (!Bluefruit.connected())
         {
           Bluefruit.Advertising.start(advertizeTimeout);
-          topLightBlinkTimer.setPeriod(300);
-          topLightBlinkStart = millis();
+          topLightBlinkTimer.setPeriod(250);
           topLightBlinkTimer.start();
         }
       break;
@@ -416,6 +415,19 @@ void advertizeStopCallback(void)
   digitalWrite(lightPin[0], LOW);
 }
 
+void advertizeSlowCallback(void)
+{
+  /* Slow down blinking. */
+  topLightBlinkTimer.setPeriod(1000);
+}
+
+/* Blink top light, if fast mode is past, blink slower, if advertize
+   timeout is past, stop blinking. */
+void topLightBlinkRoutine(TimerHandle_t _handle)
+{
+  digitalToggle(lightPin[0]);
+}
+
 float readBatteryVoltage(void)
 {
   /* REF: https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/nrf52-adc */
@@ -460,24 +472,6 @@ void checkBatteryRoutine(TimerHandle_t _handle)
   if (usbVoltage < 800)
     {
       digitalWrite(lightPin[1], LOW);
-    }
-}
-
-/* Blink top light, if fast mode is past, blink slower, if advertize
-   timeout is past, stop blinking. */
-void topLightBlinkRoutine(TimerHandle_t _handle)
-{
-  digitalToggle(lightPin[0]);
-  unsigned long currentTime = millis();
-  if (currentTime - topLightBlinkStart
-      > advertizeFastModeTimeout * 1000)
-    {
-      topLightBlinkTimer.setPeriod(1000);
-    }
-  if (currentTime - topLightBlinkStart > advertizeTimeout * 1000)
-    {
-      digitalWrite(lightPin[0], LOW);
-      topLightBlinkTimer.stop();
     }
 }
 
