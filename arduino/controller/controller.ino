@@ -117,6 +117,8 @@ unsigned long topLightBlinkStart;
 
 void setup()
 {
+  /* This seems to save some power. */
+  NRF_POWER->DCDCEN = 1;
   /* Serial.begin(115200); */
 
   pinMode(led1Pin, OUTPUT);
