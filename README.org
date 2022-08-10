@@ -1,6 +1,18 @@
 #+TITLE: CQ-80 Terminal (NAMACO端末)
 #+HTML_HEAD: <style>body { width: 700px; margin: auto; font-size: 14pt; }</style>
 
+* Table of contents :TOC:
+- [[#how-to-make][How to make]]
+  - [[#3d-printed-parts][3d-printed parts]]
+  - [[#install-threaded-inserts-to-the-printed-parts][Install threaded inserts to the printed parts]]
+  - [[#dye-the-parts][Dye the parts]]
+  - [[#upload-program-to-the-microcontroller][Upload program to the microcontroller]]
+  - [[#print-pcb-boards][Print PCB boards]]
+  - [[#solder-electronic-parts][Solder electronic parts]]
+  - [[#assemble][Assemble]]
+- [[#parts-listing][Parts listing]]
+- [[#cost][Cost]]
+
 * How to make
 
 It is fairly easy to make one of these because parts and pcb boards are printed, we just need to assemble and solder them together, plus dyeing the parts and uploading a program onto the microcontroller.
