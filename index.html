@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-08-09 Tue 19:43 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CQ-80 Terminal (NAMACO端末)</title>
+<meta name="author" content="Yuan Fu" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link id="style" rel="stylesheet" type="text/css" href="./style.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">CQ-80 Terminal (NAMACO端末)</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga6b25e9">1. How to make</a>
+<ul>
+<li><a href="#org6c5df60">1.1. 3d-printed parts</a></li>
+<li><a href="#orge609a54">1.2. Install threaded inserts to the printed parts</a></li>
+<li><a href="#orgf99b71d">1.3. Dye the parts</a></li>
+<li><a href="#orgf21ef56">1.4. Upload program to the microcontroller</a></li>
+<li><a href="#org995d536">1.5. Print PCB boards</a></li>
+<li><a href="#org733603c">1.6. Solder electronic parts</a></li>
+<li><a href="#org9750873">1.7. Assemble</a></li>
+</ul>
+</li>
+<li><a href="#org3354408">2. Parts listing</a></li>
+<li><a href="#orgc00de3e">3. Cost</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga6b25e9" class="outline-2">
+<h2 id="orga6b25e9"><span class="section-number-2">1.</span> How to make</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+It is fairly easy to make one of these because parts and pcb boards are printed, we just need to assemble and solder them together, plus dyeing the parts and uploading a program onto the microcontroller.
+</p>
+</div>
+
+<div id="outline-container-org6c5df60" class="outline-3">
+<h3 id="org6c5df60"><span class="section-number-3">1.1.</span> 3d-printed parts</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+There are eight parts to print: the top and bottom shells, thumbstick and thumbstick guard, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in <code>/step</code> and <code>/dae</code> directories. <code>step</code> and <code>dae</code> are two 3d model file formats, any 3d printing service accepts at least one of the two.
+</p>
+
+
+<div id="orga9e8b12" class="figure">
+<p><img src="./graphics/3d-printed-parts.png" alt="3d-printed-parts.png" width="100%" />
+</p>
+<p><span class="figure-number">Figure 1: </span>3d-printed parts and their canonical name</p>
+</div>
+
+<p>
+The two 3d-printing services that I know of are <a href="https://www.shapeways.com/">Shapeways</a> and <a href="https://www.xometry.com/">Xometry</a>. Visit their website, upload the model files and select the material and the 3d-printing technology to use, along with other details like finishing and color.
+</p>
+
+<p>
+I recommend using MJF or SLS (technology) with nylon 12 (material) for all the parts except the trademark insert. Nylon 12 (shapways calls it “versatile plastic”) is strong and inexpensive. MJF and SLS are not too expensive and have great resolution. You can use SLA, but it is more expensive and I didn’t look into its available materials.
+</p>
+
+<p>
+Because the trademark insert is very small and detailed, SLA suits better. SLA has a higher resolution than MJF and SLS. Any of the available materials for SLA will do.
+</p>
+
+<p>
+Don’t use FDM. Its resolution is too low, and some structures in the parts simply cannot be printed with FDM.
+</p>
+
+<p>
+Here is a description of 3d-printing technologies I mentioned above: <a href="https://formlabs.com/blog/fdm-vs-sla-vs-sls-how-to-choose-the-right-3d-printing-technology/">3D Printing Technology Comparison: FDM vs. SLA vs. SLS</a>. SLS and MJF are quite similar, what it says about SLS pretty much applies to MJF too.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge609a54" class="outline-3">
+<h3 id="orge609a54"><span class="section-number-3">1.2.</span> Install threaded inserts to the printed parts</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Out of the eight parts, top and bottom shell are fastened together by four screws, thumbstick guard and hanger are glued to the top shell, and trademark insert and side bars are friction-fit. The PCB board and USB breakout board are also screwed to the bottom shell.
+</p>
+
+<p>
+Therefore, we need to install threaded inserts to top and bottom shell. The parts are designed to use <a href="#orge469ecf">M2 screws</a> and <a href="#org3b8f50f">M2 threaded inserts</a>. Here is a tutorial on installing heat-set inserts: <i><a href="https://markforged.com/resources/blog/heat-set-inserts">Using Heat Set Inserts</a></i>. You need <a href="#orgc56bfb4">iron</a> and <a href="#org3c60dde">heat-set insert tip</a>.
+</p>
+
+<p>
+Install inserts on these places:
+</p>
+
+
+<div id="org33e88ba" class="figure">
+<p><img src="./graphics/threaded-insert-position.png" alt="threaded-insert-position.png" width="100%" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Arrows points to the places to install inserts</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf99b71d" class="outline-3">
+<h3 id="orgf99b71d"><span class="section-number-3">1.3.</span> Dye the parts</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Use synthetic dye because the parts are made of nylon. I used <a href="#orgf0a1c41">Rit Dyemore</a> since they are readily available in North America.
+</p>
+
+<p>
+For the off-white color for the main body, I used this formula: <a href="https://www.ritdye.com/color-formulas/special-white-for-nylon/?type=203&amp;hue=0&amp;collection=0&amp;collaboration=0">Special White</a>, basically just the sandstone color. For the magenta-ish color of the thumbstick, thumstick guard and the hanger, I used this formula: <a href="https://www.ritdye.com/color-formulas/red-candies/?type=203&amp;hue=0&amp;collection=0&amp;collaboration=0">Red Candies</a>.
+</p>
+
+<p>
+Here is Rit’s official guide: <i><a href="https://www.ritdye.com/instructions/stovetop/">How to Dye Using the Stovetop Method</a></i>. I think using a kettle to boil the water and pouring into a container is fine, at least for the lighter off-white color.
+</p>
+
+<p>
+You can also paint the parts. I imagine painting gets you closer to the original in-game model, because you can paint multiple colors to the part and create a glossier finish.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf21ef56" class="outline-3">
+<h3 id="orgf21ef56"><span class="section-number-3">1.4.</span> Upload program to the microcontroller</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+You need a computer, a micro-usb cable and the <a href="#orgd098917">Adafruit microcontroller</a>.
+</p>
+
+<ol class="org-ol">
+<li>Follow this guide—<a href="https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-bsp-setup">Arduino Support Setup</a>—to install Arduino IDE and support software. The board we use is nRF52832, follow instructions for nRF52832 and ignore ones for nRF52840.</li>
+<li>Test that everything is working fine by following this guide—<a href="https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-board-setup">Arduino Board Testing</a>. Don’t skip this step.</li>
+<li>Use the Arduino IDE to open <code>/arduino/controller/controller.ino</code>, and hit the right-pointing arrow to upload the program. The board and port settings should be already set by the previous step when we test the board.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org995d536" class="outline-3">
+<h3 id="org995d536"><span class="section-number-3">1.5.</span> Print PCB boards</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+There are two boards to print, the main board (<code>/board</code>) and the USB breakout board (<code>/usb_breakout</code>). I used <a href="https://oshpark.com/">OSHPARK</a> to print PCB boards. There are cheaper providers I haven't tried like <a href="https://www.pcbway.com/">pcbway</a> and <a href="https://jlcpcb.com/">jlcpcb</a>.
+</p>
+
+<p>
+Take OSHPARK as an example, go onto their website and click “browse for files”, and choose the zip file for the board, eg, <code>/board/board.zip</code> or <code>usb_breakout/usb_breakout.zip</code>. Then hit continue all the way. Use USPS for shipping.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org733603c" class="outline-3">
+<h3 id="org733603c"><span class="section-number-3">1.6.</span> Solder electronic parts</h3>
+<div class="outline-text-3" id="text-1-6">
+<ol class="org-ol">
+<li>Solder the microcontroller to the <a href="#org6c24f8f">main board</a></li>
+<li>Solder the <a href="#org5470545">joystick</a> to the main board</li>
+<li>Solder the <a href="#org7f4ddc3">USB female connector</a> to the <a href="#org021841e">USB breakout board</a></li>
+<li>Connect the <a href="#org021841e">USB breakout board</a> to the <a href="#orgd5b050b">micro-USB breakout</a></li>
+<li>Solder <a href="#orgadfd819">resistors</a> to the main board</li>
+<li>Solder <a href="#org09c86d6">header pins</a> for the <a href="#orge377aa6">LED’s</a> to the main board</li>
+<li>Solder some <a href="#org415ce5b">jumper wires</a> to the LED’s and connect them to the header pins on the main board.</li>
+</ol>
+
+<p>
+Of course, you can use LED’s of whatever color you like, just make sure the dimension (5mm, 3mm, 8mm) are right.
+</p>
+
+<p>
+TODO (solder instruction graphics)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9750873" class="outline-3">
+<h3 id="org9750873"><span class="section-number-3">1.7.</span> Assemble</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Bottom shell:
+</p>
+<ol class="org-ol">
+<li>Screw the USB breakout to the bottom shell</li>
+<li>Screw the main board to the bottom shell</li>
+<li>Plug in the micro USB plug to the micro controller</li>
+<li>Install the thumbstick onto the joystick</li>
+</ol>
+
+<p>
+Top shell:
+</p>
+<ol class="org-ol">
+<li>Glue/tape the thumstick guard into place</li>
+<li>Glue/tape four LED’s into place</li>
+<li>Glue/tape the hanger into place</li>
+<li>Glue/tape the battery to the top shell</li>
+</ol>
+
+<p>
+Assemble:
+</p>
+<ol class="org-ol">
+<li>Plug in LED’s wires to the main board</li>
+<li>Plug in the battery to the microcontroller</li>
+<li>Screw the top and bottom shell together</li>
+<li>Install side bars.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3354408" class="outline-2">
+<h2 id="org3354408"><span class="section-number-2">2.</span> Parts listing</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+3d-printed parts (find under <code>/step</code> or <code>/dae</code>):
+</p>
+<ul class="org-ul">
+<li>Top shell <a id="org7670e00"></a></li>
+<li>Bottom shell <a id="orge0bb909"></a></li>
+<li>Thumbstick <a id="orga8e6dbe"></a></li>
+<li>Thumbstick guard <a id="orgae4ccb2"></a></li>
+<li>Side bars <a id="orgcea2a1f"></a></li>
+<li>Trademark insert <a id="orgb438ba9"></a></li>
+<li>Hanger <a id="orga25772b"></a></li>
+</ul>
+
+<p>
+Mechanical parts:
+</p>
+<ul class="org-ul">
+<li>M2<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> <a href="https://www.amazon.com/s?k=M2+screws+12mm&amp;crid=1D6SZEUYTS1PO&amp;sprefix=m2+screws+12m%2Caps%2C265&amp;ref=nb_sb_noss_2">screws</a> (12mm) × 8 (anything longer than 8mm and is not too long is fine) <a id="orge469ecf"></a></li>
+<li>Heat-set<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> M2 <a href="https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&amp;crid=2D95DDIXZW9M3&amp;sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&amp;ref=nb_sb_noss">threaded inserts</a> (4mm × 3.5mm) (length × outer diameter) × 8 <a id="org3b8f50f"></a></li>
+</ul>
+
+<p>
+Printed PCB boards:
+</p>
+<ul class="org-ul">
+<li>Main board (<code>/board/upload.zip</code>) <a id="org6c24f8f"></a></li>
+<li>USB breakout (<code>usb_breakout/upload.zip</code>) <a id="org021841e"></a></li>
+</ul>
+
+<p>
+Electronic parts:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.adafruit.com/product/3406">Adafruit Feather nRF52 Bluefruit LE (nRF52832)</a> (nRF52840 should also work if you know how to modify the program) <a id="orgd098917"></a></li>
+<li><a href="https://www.adafruit.com/product/2011">Adafruit Lithium Ion Battery 3.7V 2000mAh</a> <a id="org7c1c928"></a></li>
+<li><a href="https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&amp;crid=1QX1NDCLCAWQT&amp;sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&amp;ref=nb_sb_noss_1">Alps RKJXV1224 joystick</a> (aka switch pro controller replacement joystick) <a id="org5470545"></a></li>
+<li><a href="https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA">Molex USB 2.0 type-A female vertical mount connector</a> (product number ‎1050570001‎) <a id="org7f4ddc3"></a></li>
+<li><a href="https://www.digikey.com/en/products/detail/sparkfun-electronics/BOB-10031/5673778?s=N4IgTCBcDaIIwFYBsAOAtHOBOMaByAIoHAEIAugL5A">Sparkfun USB micro-B male breakout</a> (product number BOB-10031) <a id="orgd5b050b"></a></li>
+<li>Micro USB cable (for uploading the program to the microcontroller)</li>
+<li><a href="https://www.amazon.com/s?k=USB+male+to+USB+male&amp;ref=nb_sb_noss">USB male to USB male cable</a> (for charging CQ-80)</li>
+</ul>
+
+<p>
+Electronic consumables:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm red LED</a> × 1 (top light) <a id="orge377aa6"></a></li>
+<li><a href="https://www.amazon.com/s?k=3mm+led&amp;crid=4JJ4EKJP17Q3&amp;sprefix=3mm+le%2Caps%2C131&amp;ref=nb_sb_noss_2">3mm green LED</a>  × 1 (front lamp)</li>
+<li><a href="https://www.amazon.com/s?k=8mm+led&amp;crid=FJQQ6UVY7NAI&amp;sprefix=8mm+led%2Caps%2C140&amp;ref=nb_sb_noss_1">8mm white LED</a> × 1 (head light)</li>
+<li><a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm warm-white LED</a> × 2 (side lights)</li>
+<li><a href="https://www.amazon.com/s?k=resistors&amp;crid=1G02OHEC2Z4WT&amp;sprefix=resistors%2Caps%2C129&amp;ref=nb_sb_noss_1">Resistors</a>, 220ω × 4, 100Kω × 1. The resistance doesn’t have to be exact, 220ω ones can be replaced by any resistor in the range of 50 to 300 ohms, and the 100K one can be replaced by any in the 10K-100K range. <a id="orgadfd819"></a></li>
+<li><a href="https://www.amazon.com/s?k=jumper+wires&amp;crid=JYYBJ45HZ3F3&amp;sprefix=jumper+wire%2Caps%2C144&amp;ref=nb_sb_noss_1">Jumper wires (female)</a> <a id="org415ce5b"></a></li>
+<li><a href="https://www.amazon.com/s?k=header+pins&amp;ref=nb_sb_noss">Header pins</a> <a id="org09c86d6"></a></li>
+<li><a href="https://www.amazon.com/s?k=lcd+tape&amp;crid=2K79ZJAOILAMF&amp;sprefix=lcd+tape%2Caps%2C127&amp;ref=nb_sb_noss_1">LCD tape</a> (the ones used to tape screens and batteries in smart phones) <a id="orgd461dbe"></a></li>
+</ul>
+
+<p>
+Dye:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.ritdye.com/products/sandstone/">Rit DyeMore Sand Stone</a> <a id="orgf0a1c41"></a></li>
+<li><a href="https://www.ritdye.com/products/super-pink/">Rit DyeMore Super Pink</a></li>
+<li><a href="https://www.ritdye.com/products/racing-red/">Rit DyeMore Racing Red</a></li>
+</ul>
+
+<p>
+Tools:
+</p>
+<ul class="org-ul">
+<li>Soldering kit (<a href="https://www.amazon.com/s?k=soldering+iron&amp;crid=3UY9KIX3YB4JO&amp;sprefix=soldering+iron%2Caps%2C133&amp;ref=nb_sb_noss_1">iron &amp; tin</a>, <a href="https://www.amazon.com/s?k=third+hand&amp;crid=Y0U8J28EO3EJ&amp;sprefix=third+hand%2Caps%2C139&amp;ref=nb_sb_noss_1">third hand</a>) (for soldering and installing threaded inserts) <a id="orgc56bfb4"></a></li>
+<li><a href="https://www.amazon.com/dp/B08B17VQLD?psc=1&amp;ref=ppx_yo2ov_dt_b_product_details">Heat-set insert tip</a> (for installing threaded inserts) <a id="org3c60dde"></a></li>
+<li>Pot, tong, gloves, etc (for dyeing)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc00de3e" class="outline-2">
+<h2 id="orgc00de3e"><span class="section-number-2">3.</span> Cost</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Making the CQ-80 terminal costed me roughly $580, but part of it is because I have to buy parts in quantity and I made some unnecessary purchase. I can probably put the extra parts I have into kits for anyone want to make CQ-80. If I sell the kit for $50, plus the parts below, you should manage to make a CQ-80 in around $300, I think?
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">3d-printed parts</td>
+<td class="org-left">$150</td>
+</tr>
+
+<tr>
+<td class="org-left">microcontroller</td>
+<td class="org-left">$25</td>
+</tr>
+
+<tr>
+<td class="org-left">battery</td>
+<td class="org-left">$12</td>
+</tr>
+
+<tr>
+<td class="org-left">Dye × 3</td>
+<td class="org-left">$15</td>
+</tr>
+
+<tr>
+<td class="org-left">Soldering kit</td>
+<td class="org-left">$30</td>
+</tr>
+
+<tr>
+<td class="org-left">Total</td>
+<td class="org-left">$232</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+“M2” is the “size” of the screw, read <i><a href="https://www.hubs.com/knowledge-base/thread-types/">Thread types: The practical engineer’s guide</a></i> for some explanations.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+“Heat-set” means we melt the surrounding plastic and cool it to install the insert.
+</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>
