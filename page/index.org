@@ -1,0 +1,158 @@
+#+TITLE: CQ-80 Terminal (NAMACO端末)
+#+HTML_HEAD: <link id="style" rel="stylesheet" type="text/css" href="./style.css"/>
+
+* How to make
+
+It is fairly easy to make one of these because parts and pcb boards are printed, we just need to assemble and solder them together, plus dyeing the parts and uploading a program onto the microcontroller.
+
+** 3d-printed parts
+There are eight parts to print: the top and bottom shells, thumbstick and thumbstick guard, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in =/step= and =/dae= directories. =step= and =dae= are two 3d model file formats, any 3d printing service accepts at least one of the two.
+
+#+caption: 3d-printed parts and their canonical name
+#+attr_html: :width 100%
+#+attr_latex: :width 400px
+[[./graphics/3d-printed-parts.png]]
+
+The two 3d-printing services that I know of are [[https://www.shapeways.com/][Shapeways]] and [[https://www.xometry.com/][Xometry]]. Visit their website, upload the model files and select the material and the 3d-printing technology to use, along with other details like finishing and color.
+
+I recommend using MJF or SLS (technology) with nylon 12 (material) for all the parts except the trademark insert. Nylon 12 (shapways calls it “versatile plastic”) is strong and inexpensive. MJF and SLS are not too expensive and have great resolution. You can use SLA, but it is more expensive and I didn’t look into its available materials.
+
+Because the trademark insert is very small and detailed, SLA suits better. SLA has a higher resolution than MJF and SLS. Any of the available materials for SLA will do.
+
+Don’t use FDM. Its resolution is too low, and some structures in the parts simply cannot be printed with FDM.
+
+Here is a description of 3d-printing technologies I mentioned above: [[https://formlabs.com/blog/fdm-vs-sla-vs-sls-how-to-choose-the-right-3d-printing-technology/][3D Printing Technology Comparison: FDM vs. SLA vs. SLS]]. SLS and MJF are quite similar, what it says about SLS pretty much applies to MJF too.
+
+** Install threaded inserts to the printed parts
+Out of the eight parts, top and bottom shell are fastened together by four screws, thumbstick guard and hanger are glued to the top shell, and trademark insert and side bars are friction-fit. The PCB board and USB breakout board are also screwed to the bottom shell.
+
+Therefore, we need to install threaded inserts to top and bottom shell. The parts are designed to use [[M2 screws][M2 screws]] and [[M2 threaded inserts][M2 threaded inserts]]. Here is a tutorial on installing heat-set inserts: /[[https://markforged.com/resources/blog/heat-set-inserts][Using Heat Set Inserts]]/. You need [[soldering iron][iron]] and [[heat-set insert tip][heat-set insert tip]].
+
+Install inserts on these places:
+
+#+caption: Arrows points to the places to install inserts
+#+attr_html: :width 100%
+#+attr_latex: :width 400px
+[[./graphics/threaded-insert-position.png]]
+
+
+** Dye the parts
+Use synthetic dye because the parts are made of nylon. I used [[dye][Rit Dyemore]] since they are readily available in North America.
+
+For the off-white color for the main body, I used this formula: [[https://www.ritdye.com/color-formulas/special-white-for-nylon/?type=203&hue=0&collection=0&collaboration=0][Special White]], basically just the sandstone color. For the magenta-ish color of the thumbstick, thumstick guard and the hanger, I used this formula: [[https://www.ritdye.com/color-formulas/red-candies/?type=203&hue=0&collection=0&collaboration=0][Red Candies]].
+
+Here is Rit’s official guide: /[[https://www.ritdye.com/instructions/stovetop/][How to Dye Using the Stovetop Method]]/. I think using a kettle to boil the water and pouring into a container is fine, at least for the lighter off-white color.
+
+You can also paint the parts. I imagine painting gets you closer to the original in-game model, because you can paint multiple colors to the part and create a glossier finish.
+
+** Upload program to the microcontroller
+You need a computer, a micro-usb cable and the [[feather nrf52][Adafruit microcontroller]].
+
+1. Follow this guide—[[https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-bsp-setup][Arduino Support Setup]]—to install Arduino IDE and support software. The board we use is nRF52832, follow instructions for nRF52832 and ignore ones for nRF52840.
+1. Test that everything is working fine by following this guide—[[https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-board-setup][Arduino Board Testing]]. Don’t skip this step.
+1. Use the Arduino IDE to open =/arduino/controller/controller.ino=, and hit the right-pointing arrow to upload the program. The board and port settings should be already set by the previous step when we test the board.
+
+** Print PCB boards
+There are two boards to print, the main board (=/board=) and the USB breakout board (=/usb_breakout=). I used [[https://oshpark.com/][OSHPARK]] to print PCB boards. There are cheaper providers I haven't tried like [[https://www.pcbway.com/][pcbway]] and [[https://jlcpcb.com/][jlcpcb]].
+
+Take OSHPARK as an example, go onto their website and click “browse for files”, and choose the zip file for the board, eg, =/board/board.zip= or =usb_breakout/usb_breakout.zip=. Then hit continue all the way. Use USPS for shipping.
+
+** Solder electronic parts
+1. Solder the microcontroller to the [[main board][main board]]
+1. Solder the [[joystick][joystick]] to the main board
+1. Solder the [[usb type-A connector][USB female connector]] to the [[usb breakout][USB breakout board]]
+1. Connect the [[usb breakout][USB breakout board]] to the [[micro usb breakout][micro-USB breakout]]
+1. Solder [[resistors][resistors]] to the main board
+1. Solder [[header pins][header pins]] for the [[LED’s][LED’s]] to the main board
+1. Solder some [[jumper wires][jumper wires]] to the LED’s and connect them to the header pins on the main board.
+
+Of course, you can use LED’s of whatever color you like, just make sure the dimension (5mm, 3mm, 8mm) are right.
+
+TODO (solder instruction graphics)
+
+** Assemble
+
+Bottom shell:
+1. Screw the USB breakout to the bottom shell
+1. Screw the main board to the bottom shell
+1. Plug in the micro USB plug to the micro controller
+1. Install the thumbstick onto the joystick
+
+Top shell:
+1. Glue/tape the thumstick guard into place
+1. Glue/tape four LED’s into place
+1. Glue/tape the hanger into place
+1. Glue/tape the battery to the top shell
+
+Assemble:
+1. Plug in LED’s wires to the main board
+1. Plug in the battery to the microcontroller
+1. Screw the top and bottom shell together
+1. Install side bars.
+
+* Parts listing
+
+3d-printed parts (find under =/step= or =/dae=):
+- Top shell <<top shell>>
+- Bottom shell <<bottom shell>>
+- Thumbstick <<thumbstick>>
+- Thumbstick guard <<thumbstick guard>>
+- Side bars <<side bars>>
+- Trademark insert <<trademark insert>>
+- Hanger <<hanger>>
+
+Mechanical parts:
+- M2[fn:m2] [[https://www.amazon.com/s?k=M2+screws+12mm&crid=1D6SZEUYTS1PO&sprefix=m2+screws+12m%2Caps%2C265&ref=nb_sb_noss_2][screws]] (12mm) × 8 (anything longer than 8mm and is not too long is fine) <<M2 screws>>
+- Heat-set[fn:heat-set] M2 [[https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&crid=2D95DDIXZW9M3&sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&ref=nb_sb_noss][threaded inserts]] (4mm × 3.5mm) (length × outer diameter) × 8 <<M2 threaded inserts>>
+
+Printed PCB boards:
+- Main board (=/board/upload.zip=) <<main board>>
+- USB breakout (=usb_breakout/upload.zip=) <<usb breakout>>
+
+Electronic parts:
+- [[https://www.adafruit.com/product/3406][Adafruit Feather nRF52 Bluefruit LE (nRF52832)]] (nRF52840 should also work if you know how to modify the program) <<feather nrf52>>
+- [[https://www.adafruit.com/product/2011][Adafruit Lithium Ion Battery 3.7V 2000mAh]] <<lipo battery>>
+- [[https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&crid=1QX1NDCLCAWQT&sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&ref=nb_sb_noss_1][Alps RKJXV1224 joystick]] (aka switch pro controller replacement joystick) <<joystick>>
+- [[https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA][Molex USB 2.0 type-A female vertical mount connector]] (product number ‎1050570001‎) <<usb type-A connector>>
+- [[https://www.digikey.com/en/products/detail/sparkfun-electronics/BOB-10031/5673778?s=N4IgTCBcDaIIwFYBsAOAtHOBOMaByAIoHAEIAugL5A][Sparkfun USB micro-B male breakout]] (product number BOB-10031) <<micro usb breakout>>
+- Micro USB cable (for uploading the program to the microcontroller)
+- [[https://www.amazon.com/s?k=USB+male+to+USB+male&ref=nb_sb_noss][USB male to USB male cable]] (for charging CQ-80)
+
+Electronic consumables:
+- [[https://www.amazon.com/s?k=5mm+led&crid=1DRG7DU8VXT7J&sprefix=5mm+led%2Caps%2C145&ref=nb_sb_noss_1][5mm red LED]] × 1 (top light) <<LED’s>>
+- [[https://www.amazon.com/s?k=3mm+led&crid=4JJ4EKJP17Q3&sprefix=3mm+le%2Caps%2C131&ref=nb_sb_noss_2][3mm green LED]]  × 1 (front lamp)
+- [[https://www.amazon.com/s?k=8mm+led&crid=FJQQ6UVY7NAI&sprefix=8mm+led%2Caps%2C140&ref=nb_sb_noss_1][8mm white LED]] × 1 (head light)
+- [[https://www.amazon.com/s?k=5mm+led&crid=1DRG7DU8VXT7J&sprefix=5mm+led%2Caps%2C145&ref=nb_sb_noss_1][5mm warm-white LED]] × 2 (side lights)
+- [[https://www.amazon.com/s?k=resistors&crid=1G02OHEC2Z4WT&sprefix=resistors%2Caps%2C129&ref=nb_sb_noss_1][Resistors]], 220ω × 4, 100Kω × 1. The resistance doesn’t have to be exact, 220ω ones can be replaced by any resistor in the range of 50 to 300 ohms, and the 100K one can be replaced by any in the 10K-100K range. <<resistors>>
+- [[https://www.amazon.com/s?k=jumper+wires&crid=JYYBJ45HZ3F3&sprefix=jumper+wire%2Caps%2C144&ref=nb_sb_noss_1][Jumper wires (female)]] <<jumper wires>>
+- [[https://www.amazon.com/s?k=header+pins&ref=nb_sb_noss][Header pins]] <<header pins>>
+- [[https://www.amazon.com/s?k=lcd+tape&crid=2K79ZJAOILAMF&sprefix=lcd+tape%2Caps%2C127&ref=nb_sb_noss_1][LCD tape]] (the ones used to tape screens and batteries in smart phones) <<LCD tape>>
+
+Dye:
+- [[https://www.ritdye.com/products/sandstone/][Rit DyeMore Sand Stone]] <<dye>>
+- [[https://www.ritdye.com/products/super-pink/][Rit DyeMore Super Pink]]
+- [[https://www.ritdye.com/products/racing-red/][Rit DyeMore Racing Red]]
+
+Tools:
+- Soldering kit ([[https://www.amazon.com/s?k=soldering+iron&crid=3UY9KIX3YB4JO&sprefix=soldering+iron%2Caps%2C133&ref=nb_sb_noss_1][iron & tin]], [[https://www.amazon.com/s?k=third+hand&crid=Y0U8J28EO3EJ&sprefix=third+hand%2Caps%2C139&ref=nb_sb_noss_1][third hand]]) (for soldering and installing threaded inserts) <<soldering iron>>
+- [[https://www.amazon.com/dp/B08B17VQLD?psc=1&ref=ppx_yo2ov_dt_b_product_details][Heat-set insert tip]] (for installing threaded inserts) <<heat-set insert tip>>
+- Pot, tong, gloves, etc (for dyeing)
+
+[fn:m2] “M2” is the “size” of the screw, read /[[https://www.hubs.com/knowledge-base/thread-types/][Thread types: The practical engineer’s guide]]/ for some explanations.
+
+[fn:heat-set] “Heat-set” means we melt the surrounding plastic and cool it to install the insert.
+
+* Cost
+
+Making the CQ-80 terminal costed me roughly $580, but part of it is because I have to buy parts in quantity and I made some unnecessary purchase. I can probably put the extra parts I have into kits for anyone want to make CQ-80. If I sell the kit for $50, plus the parts below, you should manage to make a CQ-80 in around $300, I think?
+
+| 3d-printed parts | $150 |
+| microcontroller  | $25  |
+| battery          | $12  |
+| Dye × 3          | $15  |
+| Soldering kit    | $30  |
+| Total            | $232 |
+
+# Local Variables:
+# org-html-postamble: nil
+# End:
