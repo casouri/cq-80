@@ -1,0 +1,178 @@
+#+TITLE: CQ-80 Terminal (NAMACO端末)
+#+HTML_HEAD: <link id="style" rel="stylesheet" type="text/css" href="./style.css"/>
+#+LANGUAGE: zh-CN
+
+* 展示
+
+自制章鱼 DLC 里的 NAMACO 终端！不光还原了外形，还加入了蓝牙音乐控制器的功能，晚上还可以把探照灯用作夜灯！3D 打印外壳和打印的电路板，不是手工达人也可以自己做！
+
+(photo)
+
+(photo)
+
+(promo)
+
+| 长按摇杆      | 匹配蓝牙设备  |
+| 按一下摇杆    | 不知道干啥用  |
+| 上推摇杆      | 切换灯光      |
+| 下推摇杆      | 播放/暂停     |
+| 左/右推摇杆   | 上/下一首     |
+| 顺时/逆时针转 | 升高/降低音量 |
+
+我还想加入随机/循环/快进/快退功能来着，但是可能因为这些功能不常用，电脑不能识别，可恶。
+
+#+CAPTION: 指示灯，推动摇杆就会亮，匹配蓝牙设备的时候闪烁。
+
+#+CAPTION: 电量指示灯，电量低的时候会缓慢闪烁，充电的时候常亮，充满电熄灭。
+
+#+CAPTION: 头灯和副灯，副灯可以用作小夜灯，头灯可以半夜上厕所的时候当手电用www
+
+#+CAPTION: 为了还原，终端没法容下标准尺寸的卡。读卡功能感觉有点鸡肋也没有加。
+
+#+CAPTION: 初号机当然是紫绿配色😈
+
+#+CAPTION: 100%细节还原。
+
+#+CAPTION: 这个小铭牌是可以拆卸的。
+
+#+CAPTION: 隐藏的螺丝孔。
+
+* 还原对比
+
+
+* 制作指南
+
+这种终端还是很容易做的，毕竟部件和电路板都是打印的。只需要需要给部件染色，焊一点电子元件，上传程序到微型处理器上，最后组装到一起。
+
+因为我在北美，所以我用来 3D 打印的网站（[[https://shapeways.com][Shapeways]]）和购买各种零部件的网站对国内的乌贼来说可能没什么参考价值，想做的乌贼需要自己找一找这样的网站和商店。
+
+** 3D 打印的部件
+一共有八个需要打印的部件：顶壳底壳，摇杆和摇杆环，左右栏杆，铭牌和绳挂。3D 模型文件在 =/step= 和 =/dae= 目录下。 =step= 和 =dae= 是 3D 模型的文件格式，任何 3D 打印网站都会至少支持其中一个格式。
+
+#+caption: 3D 打印的部件和名字标注
+#+attr_html: :width 100%
+#+attr_latex: :width 400px
+[[./graphics/3d-printed-parts.png]]
+
+找到提供 3D 打印的网站以后，一般上传模型文件然后选择制作工艺的材料，和其他一些细节就可以了。
+
+我推荐用 MJF 或者 SLS 的工艺和尼龙12（PA12）的材料。PA12很结实也不贵。SLA 工艺也可以，但是会更贵。
+
+因为铭牌又小又精细，SLA 就比较适合。SLA 打印精度更高。材的话感觉都可以。
+
+别用 FDM，就是家用的 3D 打印机的工艺，精度太低，而且有些部件的结构 FDM 打印不了。
+
+感兴趣的乌贼可以看看这篇对 3D 打印工艺的介绍：[[https://formlabs.com/blog/fdm-vs-sla-vs-sls-how-to-choose-the-right-3d-printing-technology/][3D Printing Technology Comparison: FDM vs. SLA vs. SLS]]. SLS 和 MJF 很相似，里面说的关于 SLS 的东西基本上对 MJF 也一样。
+
+** 安装螺母
+八个部件里面，顶壳底壳靠四个螺丝拧紧，摇杆环和绳挂粘在上壳上，铭牌和左右栏杆靠硬塞。电路板和USB接口也靠螺丝拧在底壳上。
+
+我们需要在上下壳上安装螺母。这些部件设计上要求 [[M2 screws][M2 螺丝]] 和 [[M2 threaded inserts][M2 热熔螺母]]。网上应该有安装热熔螺母的教程，基本上就是把螺母放在孔上，然后用电烙铁加热一下就会融化周围的塑料，使螺母嵌进去。
+
+热熔螺母要装在这些地方：
+
+#+caption: 螺母要装在箭头指向的位置。
+#+attr_html: :width 100%
+#+attr_latex: :width 400px
+[[./graphics/threaded-insert-position.png]]
+
+
+** 给部件染色
+给部件染色要用尼龙染料，因为部件是尼龙做的。我找的染料和颜色配方都是北美的，国内的乌贼自己得找一找。我主体的牙白用的这个颜色：[[https://www.ritdye.com/color-formulas/special-white-for-nylon/?type=203&hue=0&collection=0&collaboration=0][Special White]]，紫红色的部份用的这个颜色：[[https://www.ritdye.com/color-formulas/red-candies/?type=203&hue=0&collection=0&collaboration=0][Red Candies]]。
+
+有能力的乌贼也可以喷漆，我感觉喷漆可能更还原，因为其实终端上有不只一个颜色。喷漆的话表面估计也会更光滑。
+
+** 把程序上传到微型处理器上
+这一步需要电脑，micro USB数据线和 [[feather nrf52][Adafruit 的微型处理器]]。
+
+1. 按照这个指南—[[https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-bsp-setup][Arduino Support Setup]]—安装 Arduino IDE。我们用的处理器是 nRF53832。
+1. 按照这个指南—[[https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-board-setup][Arduino Board Testing]]—测试一下板子能用，我们能上传程序。
+1. 用 Arduino IDE 打开 =/arduino/controller/controller.ino=​，把程序上传到处理器。
+
+** 打印电路板
+我们要打印两个电路板，一个主板（=/board=），一个 USB 接口（=/usb_breakout=）。国内打印电路板的网站应该挺多的，随便找一个，把 zip 文件上传到网站上（=/board/board.zip= 和 =/usb_breakout/usb_breakout.zip=）就行了。
+
+
+** 焊接电子部件
+1. 把微型处理器焊到 [[main board][主板]]上
+1. 把[[joystick][摇杆]]焊到主板上
+1. 把[[usb type-A connector][USB 接口]]焊到[[usb breakout][USB接口板]]上
+1. 把[[usb breakout][USB 接口板]]连到[[micro usb breakout][micro-USB 接口板]]上
+1. 把[[resistors][电阻]]焊到主板上
+1. 把[[header pins][金属接头]] 焊到主板 [[LED’s][LED]] 的位置上
+1. 给 LED连上[[jumper wires][电线]]
+
+当然，LED想要什么颜色都可以，只要尺寸对就行。
+
+TODO (solder instruction graphics)
+
+** 组装
+
+底壳：
+1. 用螺丝把usb接口拧在底壳上
+1. 用螺丝把主板拧在底壳上
+1. 把micro usb接头插到微型处理器上
+1. 把摇杆装上
+
+顶壳：
+1. 把摇杆环粘上
+1. 把四个 LED 装上
+1. 把绳挂粘上
+1. 把电池粘上
+
+组装：
+1. 把 LED 的线插到主板对应的接头上
+1. 把电池插到微型处理器上
+1. 上下壳装好
+1. 把左右栏杆插上
+
+* 部件明细
+3D 打印的部件（在 =/step= 和 =/dae= 里有模型文件）：
+- 顶壳（top） <<top shell>>
+- 底壳（bottom） <<bottom shell>>
+- 摇杆（thumbstick） <<thumbstick>>
+- 摇杆环（thumbstick guard） <<thumbstick guard>>
+- 左右栏杆（side bars） <<side bars>>
+- 铭牌（trademark） <<trademark insert>>
+- 绳挂（hanger） <<hanger>>
+
+机械零件：
+- M2 [[https://www.amazon.com/s?k=M2+screws+12mm&crid=1D6SZEUYTS1PO&sprefix=m2+screws+12m%2Caps%2C265&ref=nb_sb_noss_2][螺丝]] (8mm 长) × 4 <<M2 screws>>
+- M2 螺丝 (4mm) × 4
+- 热熔 M2 [[https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&crid=2D95DDIXZW9M3&sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&ref=nb_sb_noss][螺母]] (4mm × 3.5mm) (长度 × 外径) × 8 <<M2 threaded inserts>>
+
+打印的电路板：
+- 主板 (=/board/upload.zip=) <<main board>>
+- USB 接口板 (=/usb_breakout/upload.zip=) <<usb breakout>>
+
+电子零件：
+- [[https://www.adafruit.com/product/3406][Adafruit Feather nRF52 Bluefruit LE (nRF52832)]] (nRF52840 should also work if you know how to modify the program) <<feather nrf52>>
+- [[https://www.adafruit.com/product/2011][Adafruit Lithium Ion Battery 3.7V 2000mAh]] <<lipo battery>>
+- [[https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&crid=1QX1NDCLCAWQT&sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&ref=nb_sb_noss_1][Alps RKJXV1224 joystick]] (aka switch pro controller replacement joystick) <<joystick>>
+- [[https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA][Molex USB 2.0 type-A female vertical mount connector]] (product number ‎1050570001‎) <<usb type-A connector>>
+- [[https://www.digikey.com/en/products/detail/sparkfun-electronics/BOB-10031/5673778?s=N4IgTCBcDaIIwFYBsAOAtHOBOMaByAIoHAEIAugL5A][Sparkfun USB micro-B male breakout]] (product number BOB-10031) <<micro usb breakout>>
+- Micro USB 线（用来上传程序）
+- [[https://www.amazon.com/s?k=USB+male+to+USB+male&ref=nb_sb_noss][USB 公对公线]]（用来给终端充电）
+
+电子耗材：
+- [[https://www.amazon.com/s?k=5mm+led&crid=1DRG7DU8VXT7J&sprefix=5mm+led%2Caps%2C145&ref=nb_sb_noss_1][5mm red LED]] × 1 （指示灯） <<LED’s>>
+- [[https://www.amazon.com/s?k=3mm+led&crid=4JJ4EKJP17Q3&sprefix=3mm+le%2Caps%2C131&ref=nb_sb_noss_2][3mm green LED]]  × 1 （电量指示灯）
+- [[https://www.amazon.com/s?k=8mm+led&crid=FJQQ6UVY7NAI&sprefix=8mm+led%2Caps%2C140&ref=nb_sb_noss_1][8mm white LED]] × 1 （头灯）
+- [[https://www.amazon.com/s?k=5mm+led&crid=1DRG7DU8VXT7J&sprefix=5mm+led%2Caps%2C145&ref=nb_sb_noss_1][5mm warm-white LED]] × 2 （副灯）
+- [[https://www.amazon.com/s?k=resistors&crid=1G02OHEC2Z4WT&sprefix=resistors%2Caps%2C129&ref=nb_sb_noss_1][电阻]]，220ω × 4，100Kω × 1。具体电阻不需要很精确，差不多就行。<<resistors>>
+- [[https://www.amazon.com/s?k=jumper+wires&crid=JYYBJ45HZ3F3&sprefix=jumper+wire%2Caps%2C144&ref=nb_sb_noss_1][跳线（母）]]<<jumper wires>>
+- [[https://www.amazon.com/s?k=header+pins&ref=nb_sb_noss][金属接口]]<<header pins>>
+- [[https://www.amazon.com/s?k=lcd+tape&crid=2K79ZJAOILAMF&sprefix=lcd+tape%2Caps%2C127&ref=nb_sb_noss_1][LCD 胶带]]（手机里粘屏幕电池的那种） <<LCD tape>>
+
+染料：
+- [[https://www.ritdye.com/products/sandstone/][Rit DyeMore Sand Stone]] <<dye>>
+- [[https://www.ritdye.com/products/super-pink/][Rit DyeMore Super Pink]]
+- [[https://www.ritdye.com/products/racing-red/][Rit DyeMore Racing Red]]
+
+工具：
+- 电烙铁套装（[[https://www.amazon.com/s?k=soldering+iron&crid=3UY9KIX3YB4JO&sprefix=soldering+iron%2Caps%2C133&ref=nb_sb_noss_1][电烙铁和焊锡]]，[[https://www.amazon.com/s?k=third+hand&crid=Y0U8J28EO3EJ&sprefix=third+hand%2Caps%2C139&ref=nb_sb_noss_1][架子]]）<<soldering iron>>
+- [[https://www.amazon.com/dp/B08B17VQLD?psc=1&ref=ppx_yo2ov_dt_b_product_details][装热熔螺母的电烙铁头]] <<heat-set insert tip>>
+
+# Local Variables:
+# org-html-postamble: nil
+# End:

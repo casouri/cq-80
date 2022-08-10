@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+<!-- 2022-08-10 Wed 00:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CQ-80 Terminal (NAMACO端末)</title>
+<meta name="author" content="Yuan Fu" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link id="style" rel="stylesheet" type="text/css" href="./style.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">CQ-80 Terminal (NAMACO端末)</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>&#30446;&#24405;</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org7fb255e">1. 展示</a></li>
+<li><a href="#org0b36cf1">2. 还原对比</a></li>
+<li><a href="#orgc3604f7">3. 制作指南</a>
+<ul>
+<li><a href="#org7e52a8b">3.1. 3D 打印的部件</a></li>
+<li><a href="#org10c0694">3.2. 安装螺母</a></li>
+<li><a href="#orgd339ea0">3.3. 给部件染色</a></li>
+<li><a href="#orgc389037">3.4. 把程序上传到微型处理器上</a></li>
+<li><a href="#org350b396">3.5. 打印电路板</a></li>
+<li><a href="#orgb34b962">3.6. 焊接电子部件</a></li>
+<li><a href="#org1d7ec33">3.7. 组装</a></li>
+</ul>
+</li>
+<li><a href="#org91d7d8f">4. 部件明细</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7fb255e" class="outline-2">
+<h2 id="org7fb255e"><span class="section-number-2">1.</span> 展示</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+自制章鱼 DLC 里的 NAMACO 终端！不光还原了外形，还加入了蓝牙音乐控制器的功能，晚上还可以把探照灯用作夜灯！3D 打印外壳和打印的电路板，不是手工达人也可以自己做！
+</p>
+
+<p>
+(photo)
+</p>
+
+<p>
+(photo)
+</p>
+
+<p>
+(promo)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">长按摇杆</td>
+<td class="org-left">匹配蓝牙设备</td>
+</tr>
+
+<tr>
+<td class="org-left">按一下摇杆</td>
+<td class="org-left">不知道干啥用</td>
+</tr>
+
+<tr>
+<td class="org-left">上推摇杆</td>
+<td class="org-left">切换灯光</td>
+</tr>
+
+<tr>
+<td class="org-left">下推摇杆</td>
+<td class="org-left">播放/暂停</td>
+</tr>
+
+<tr>
+<td class="org-left">左/右推摇杆</td>
+<td class="org-left">上/下一首</td>
+</tr>
+
+<tr>
+<td class="org-left">顺时/逆时针转</td>
+<td class="org-left">升高/降低音量</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+我还想加入随机/循环/快进/快退功能来着，但是可能因为这些功能不常用，电脑不能识别，可恶。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0b36cf1" class="outline-2">
+<h2 id="org0b36cf1"><span class="section-number-2">2.</span> 还原对比</h2>
+</div>
+
+
+<div id="outline-container-orgc3604f7" class="outline-2">
+<h2 id="orgc3604f7"><span class="section-number-2">3.</span> 制作指南</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+这种终端还是很容易做的，毕竟部件和电路板都是打印的。只需要需要给部件染色，焊一点电子元件，上传程序到微型处理器上，最后组装到一起。
+</p>
+
+<p>
+因为我在北美，所以我用来 3D 打印的网站（<a href="https://shapeways.com">Shapeways</a>）和购买各种零部件的网站对国内的乌贼来说可能没什么参考价值，想做的乌贼需要自己找一找这样的网站和商店。
+</p>
+</div>
+
+<div id="outline-container-org7e52a8b" class="outline-3">
+<h3 id="org7e52a8b"><span class="section-number-3">3.1.</span> 3D 打印的部件</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+一共有八个需要打印的部件：顶壳底壳，摇杆和摇杆环，左右栏杆，铭牌和绳挂。3D 模型文件在 <code>/step</code> 和 <code>/dae</code> 目录下。 <code>step</code> 和 <code>dae</code> 是 3D 模型的文件格式，任何 3D 打印网站都会至少支持其中一个格式。
+</p>
+
+
+<div id="orga4223d1" class="figure">
+<p><img src="./graphics/3d-printed-parts.png" alt="3d-printed-parts.png" width="100%" />
+</p>
+<p><span class="figure-number">&#22270;1&nbsp; </span>3D 打印的部件和名字标注</p>
+</div>
+
+<p>
+找到提供 3D 打印的网站以后，一般上传模型文件然后选择制作工艺的材料，和其他一些细节就可以了。
+</p>
+
+<p>
+我推荐用 MJF 或者 SLS 的工艺和尼龙12（PA12）的材料。PA12很结实也不贵。SLA 工艺也可以，但是会更贵。
+</p>
+
+<p>
+因为铭牌又小又精细，SLA 就比较适合。SLA 打印精度更高。材的话感觉都可以。
+</p>
+
+<p>
+别用 FDM，就是家用的 3D 打印机的工艺，精度太低，而且有些部件的结构 FDM 打印不了。
+</p>
+
+<p>
+感兴趣的乌贼可以看看这篇对 3D 打印工艺的介绍：<a href="https://formlabs.com/blog/fdm-vs-sla-vs-sls-how-to-choose-the-right-3d-printing-technology/">3D Printing Technology Comparison: FDM vs. SLA vs. SLS</a>. SLS 和 MJF 很相似，里面说的关于 SLS 的东西基本上对 MJF 也一样。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org10c0694" class="outline-3">
+<h3 id="org10c0694"><span class="section-number-3">3.2.</span> 安装螺母</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+八个部件里面，顶壳底壳靠四个螺丝拧紧，摇杆环和绳挂粘在上壳上，铭牌和左右栏杆靠硬塞。电路板和USB接口也靠螺丝拧在底壳上。
+</p>
+
+<p>
+我们需要在上下壳上安装螺母。这些部件设计上要求 <a href="#org44191e6">M2 螺丝</a> 和 <a href="#orgb62c394">M2 热熔螺母</a>。网上应该有安装热熔螺母的教程，基本上就是把螺母放在孔上，然后用电烙铁加热一下就会融化周围的塑料，使螺母嵌进去。
+</p>
+
+<p>
+热熔螺母要装在这些地方：
+</p>
+
+
+<div id="org4bd22c3" class="figure">
+<p><img src="./graphics/threaded-insert-position.png" alt="threaded-insert-position.png" width="100%" />
+</p>
+<p><span class="figure-number">&#22270;2&nbsp; </span>螺母要装在箭头指向的位置。</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd339ea0" class="outline-3">
+<h3 id="orgd339ea0"><span class="section-number-3">3.3.</span> 给部件染色</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+给部件染色要用尼龙染料，因为部件是尼龙做的。我找的染料和颜色配方都是北美的，国内的乌贼自己得找一找。我主体的牙白用的这个颜色：<a href="https://www.ritdye.com/color-formulas/special-white-for-nylon/?type=203&amp;hue=0&amp;collection=0&amp;collaboration=0">Special White</a>，紫红色的部份用的这个颜色：<a href="https://www.ritdye.com/color-formulas/red-candies/?type=203&amp;hue=0&amp;collection=0&amp;collaboration=0">Red Candies</a>。
+</p>
+
+<p>
+有能力的乌贼也可以喷漆，我感觉喷漆可能更还原，因为其实终端上有不只一个颜色。喷漆的话表面估计也会更光滑。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc389037" class="outline-3">
+<h3 id="orgc389037"><span class="section-number-3">3.4.</span> 把程序上传到微型处理器上</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+这一步需要电脑，micro USB数据线和 <a href="#org6b5687b">Adafruit 的微型处理器</a>。
+</p>
+
+<ol class="org-ol">
+<li>按照这个指南—<a href="https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-bsp-setup">Arduino Support Setup</a>—安装 Arduino IDE。我们用的处理器是 nRF53832。</li>
+<li>按照这个指南—<a href="https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-board-setup">Arduino Board Testing</a>—测试一下板子能用，我们能上传程序。</li>
+<li>用 Arduino IDE 打开 <code>/arduino/controller/controller.ino</code>​，把程序上传到处理器。</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org350b396" class="outline-3">
+<h3 id="org350b396"><span class="section-number-3">3.5.</span> 打印电路板</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+我们要打印两个电路板，一个主板（=/board=），一个 USB 接口（=/usb<sub>breakout</sub>=）。国内打印电路板的网站应该挺多的，随便找一个，把 zip 文件上传到网站上（=/board/board.zip= 和 =/usb<sub>breakout</sub>/usb<sub>breakout.zip</sub>=）就行了。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgb34b962" class="outline-3">
+<h3 id="orgb34b962"><span class="section-number-3">3.6.</span> 焊接电子部件</h3>
+<div class="outline-text-3" id="text-3-6">
+<ol class="org-ol">
+<li>把微型处理器焊到 <a href="#orgaacd600">主板</a>上</li>
+<li>把<a href="#orgbc06ffd">摇杆</a>焊到主板上</li>
+<li>把<a href="#orgd2716aa">USB 接口</a>焊到<a href="#org8c20e69">USB接口板</a>上</li>
+<li>把<a href="#org8c20e69">USB 接口板</a>连到<a href="#org17083b2">micro-USB 接口板</a>上</li>
+<li>把<a href="#org0900719">电阻</a>焊到主板上</li>
+<li>把<a href="#org0633c4b">金属接头</a> 焊到主板 <a href="#orgdd82fa5">LED</a> 的位置上</li>
+<li>给 LED连上<a href="#org33d6d6d">电线</a></li>
+</ol>
+
+<p>
+当然，LED想要什么颜色都可以，只要尺寸对就行。
+</p>
+
+<p>
+TODO (solder instruction graphics)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1d7ec33" class="outline-3">
+<h3 id="org1d7ec33"><span class="section-number-3">3.7.</span> 组装</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+底壳：
+</p>
+<ol class="org-ol">
+<li>用螺丝把usb接口拧在底壳上</li>
+<li>用螺丝把主板拧在底壳上</li>
+<li>把micro usb接头插到微型处理器上</li>
+<li>把摇杆装上</li>
+</ol>
+
+<p>
+顶壳：
+</p>
+<ol class="org-ol">
+<li>把摇杆环粘上</li>
+<li>把四个 LED 装上</li>
+<li>把绳挂粘上</li>
+<li>把电池粘上</li>
+</ol>
+
+<p>
+组装：
+</p>
+<ol class="org-ol">
+<li>把 LED 的线插到主板对应的接头上</li>
+<li>把电池插到微型处理器上</li>
+<li>上下壳装好</li>
+<li>把左右栏杆插上</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org91d7d8f" class="outline-2">
+<h2 id="org91d7d8f"><span class="section-number-2">4.</span> 部件明细</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+3D 打印的部件（在 <code>/step</code> 和 <code>/dae</code> 里有模型文件）：
+</p>
+<ul class="org-ul">
+<li>顶壳（top） <a id="org422ef91"></a></li>
+<li>底壳（bottom） <a id="orgb05f70b"></a></li>
+<li>摇杆（thumbstick） <a id="org2132aaa"></a></li>
+<li>摇杆环（thumbstick guard） <a id="org8c0e6d9"></a></li>
+<li>左右栏杆（side bars） <a id="orgdc009c8"></a></li>
+<li>铭牌（trademark） <a id="org3399dfe"></a></li>
+<li>绳挂（hanger） <a id="org70c5881"></a></li>
+</ul>
+
+<p>
+机械零件：
+</p>
+<ul class="org-ul">
+<li>M2 <a href="https://www.amazon.com/s?k=M2+screws+12mm&amp;crid=1D6SZEUYTS1PO&amp;sprefix=m2+screws+12m%2Caps%2C265&amp;ref=nb_sb_noss_2">螺丝</a> (8mm 长) × 4 <a id="org44191e6"></a></li>
+<li>M2 螺丝 (4mm) × 4</li>
+<li>热熔 M2 <a href="https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&amp;crid=2D95DDIXZW9M3&amp;sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&amp;ref=nb_sb_noss">螺母</a> (4mm × 3.5mm) (长度 × 外径) × 8 <a id="orgb62c394"></a></li>
+</ul>
+
+<p>
+打印的电路板：
+</p>
+<ul class="org-ul">
+<li>主板 (<code>/board/upload.zip</code>) <a id="orgaacd600"></a></li>
+<li>USB 接口板 (<code>/usb_breakout/upload.zip</code>) <a id="org8c20e69"></a></li>
+</ul>
+
+<p>
+电子零件：
+</p>
+<ul class="org-ul">
+<li><a href="https://www.adafruit.com/product/3406">Adafruit Feather nRF52 Bluefruit LE (nRF52832)</a> (nRF52840 should also work if you know how to modify the program) <a id="org6b5687b"></a></li>
+<li><a href="https://www.adafruit.com/product/2011">Adafruit Lithium Ion Battery 3.7V 2000mAh</a> <a id="orgca9f1d1"></a></li>
+<li><a href="https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&amp;crid=1QX1NDCLCAWQT&amp;sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&amp;ref=nb_sb_noss_1">Alps RKJXV1224 joystick</a> (aka switch pro controller replacement joystick) <a id="orgbc06ffd"></a></li>
+<li><a href="https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA">Molex USB 2.0 type-A female vertical mount connector</a> (product number ‎1050570001‎) <a id="orgd2716aa"></a></li>
+<li><a href="https://www.digikey.com/en/products/detail/sparkfun-electronics/BOB-10031/5673778?s=N4IgTCBcDaIIwFYBsAOAtHOBOMaByAIoHAEIAugL5A">Sparkfun USB micro-B male breakout</a> (product number BOB-10031) <a id="org17083b2"></a></li>
+<li>Micro USB 线（用来上传程序）</li>
+<li><a href="https://www.amazon.com/s?k=USB+male+to+USB+male&amp;ref=nb_sb_noss">USB 公对公线</a>（用来给终端充电）</li>
+</ul>
+
+<p>
+电子耗材：
+</p>
+<ul class="org-ul">
+<li><a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm red LED</a> × 1 （指示灯） <a id="orgdd82fa5"></a></li>
+<li><a href="https://www.amazon.com/s?k=3mm+led&amp;crid=4JJ4EKJP17Q3&amp;sprefix=3mm+le%2Caps%2C131&amp;ref=nb_sb_noss_2">3mm green LED</a>  × 1 （电量指示灯）</li>
+<li><a href="https://www.amazon.com/s?k=8mm+led&amp;crid=FJQQ6UVY7NAI&amp;sprefix=8mm+led%2Caps%2C140&amp;ref=nb_sb_noss_1">8mm white LED</a> × 1 （头灯）</li>
+<li><a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm warm-white LED</a> × 2 （副灯）</li>
+<li><a href="https://www.amazon.com/s?k=resistors&amp;crid=1G02OHEC2Z4WT&amp;sprefix=resistors%2Caps%2C129&amp;ref=nb_sb_noss_1">电阻</a>，220ω × 4，100Kω × 1。具体电阻不需要很精确，差不多就行。<a id="org0900719"></a></li>
+<li><a href="https://www.amazon.com/s?k=jumper+wires&amp;crid=JYYBJ45HZ3F3&amp;sprefix=jumper+wire%2Caps%2C144&amp;ref=nb_sb_noss_1">跳线（母）</a><a id="org33d6d6d"></a></li>
+<li><a href="https://www.amazon.com/s?k=header+pins&amp;ref=nb_sb_noss">金属接口</a><a id="org0633c4b"></a></li>
+<li><a href="https://www.amazon.com/s?k=lcd+tape&amp;crid=2K79ZJAOILAMF&amp;sprefix=lcd+tape%2Caps%2C127&amp;ref=nb_sb_noss_1">LCD 胶带</a>（手机里粘屏幕电池的那种） <a id="org11ded8b"></a></li>
+</ul>
+
+<p>
+染料：
+</p>
+<ul class="org-ul">
+<li><a href="https://www.ritdye.com/products/sandstone/">Rit DyeMore Sand Stone</a> <a id="orgfafdd5a"></a></li>
+<li><a href="https://www.ritdye.com/products/super-pink/">Rit DyeMore Super Pink</a></li>
+<li><a href="https://www.ritdye.com/products/racing-red/">Rit DyeMore Racing Red</a></li>
+</ul>
+
+<p>
+工具：
+</p>
+<ul class="org-ul">
+<li>电烙铁套装（<a href="https://www.amazon.com/s?k=soldering+iron&amp;crid=3UY9KIX3YB4JO&amp;sprefix=soldering+iron%2Caps%2C133&amp;ref=nb_sb_noss_1">电烙铁和焊锡</a>，<a href="https://www.amazon.com/s?k=third+hand&amp;crid=Y0U8J28EO3EJ&amp;sprefix=third+hand%2Caps%2C139&amp;ref=nb_sb_noss_1">架子</a>）<a id="org42fdfc4"></a></li>
+<li><a href="https://www.amazon.com/dp/B08B17VQLD?psc=1&amp;ref=ppx_yo2ov_dt_b_product_details">装热熔螺母的电烙铁头</a> <a id="orgc325321"></a></li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

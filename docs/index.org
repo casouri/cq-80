@@ -30,7 +30,7 @@ Therefore, we need to install threaded inserts to top and bottom shell. The part
 
 Install inserts on these places:
 
-#+caption: Arrows points to the places to install inserts
+#+caption: Arrows point to the places to install inserts
 #+attr_html: :width 100%
 #+attr_latex: :width 400px
 [[./graphics/threaded-insert-position.png]]
@@ -108,7 +108,7 @@ Mechanical parts:
 
 Printed PCB boards:
 - Main board (=/board/upload.zip=) <<main board>>
-- USB breakout (=usb_breakout/upload.zip=) <<usb breakout>>
+- USB breakout (=/usb_breakout/upload.zip=) <<usb breakout>>
 
 Electronic parts:
 - [[https://www.adafruit.com/product/3406][Adafruit Feather nRF52 Bluefruit LE (nRF52832)]] (nRF52840 should also work if you know how to modify the program) <<feather nrf52>>
