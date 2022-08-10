@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-09 Tue 19:43 -->
+<!-- 2022-08-09 Tue 20:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CQ-80 Terminal (NAMACO端末)</title>
@@ -202,40 +202,40 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga6b25e9">1. How to make</a>
+<li><a href="#org5cd5379">1. How to make</a>
 <ul>
-<li><a href="#org6c5df60">1.1. 3d-printed parts</a></li>
-<li><a href="#orge609a54">1.2. Install threaded inserts to the printed parts</a></li>
-<li><a href="#orgf99b71d">1.3. Dye the parts</a></li>
-<li><a href="#orgf21ef56">1.4. Upload program to the microcontroller</a></li>
-<li><a href="#org995d536">1.5. Print PCB boards</a></li>
-<li><a href="#org733603c">1.6. Solder electronic parts</a></li>
-<li><a href="#org9750873">1.7. Assemble</a></li>
+<li><a href="#orgc6488a4">1.1. 3d-printed parts</a></li>
+<li><a href="#org8e026f3">1.2. Install threaded inserts to the printed parts</a></li>
+<li><a href="#orgd025945">1.3. Dye the parts</a></li>
+<li><a href="#orgb5821a0">1.4. Upload program to the microcontroller</a></li>
+<li><a href="#org4be263c">1.5. Print PCB boards</a></li>
+<li><a href="#org3324cfe">1.6. Solder electronic parts</a></li>
+<li><a href="#orgf350d8b">1.7. Assemble</a></li>
 </ul>
 </li>
-<li><a href="#org3354408">2. Parts listing</a></li>
-<li><a href="#orgc00de3e">3. Cost</a></li>
+<li><a href="#org276b0b9">2. Parts listing</a></li>
+<li><a href="#org93d727e">3. Cost</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga6b25e9" class="outline-2">
-<h2 id="orga6b25e9"><span class="section-number-2">1.</span> How to make</h2>
+<div id="outline-container-org5cd5379" class="outline-2">
+<h2 id="org5cd5379"><span class="section-number-2">1.</span> How to make</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 It is fairly easy to make one of these because parts and pcb boards are printed, we just need to assemble and solder them together, plus dyeing the parts and uploading a program onto the microcontroller.
 </p>
 </div>
 
-<div id="outline-container-org6c5df60" class="outline-3">
-<h3 id="org6c5df60"><span class="section-number-3">1.1.</span> 3d-printed parts</h3>
+<div id="outline-container-orgc6488a4" class="outline-3">
+<h3 id="orgc6488a4"><span class="section-number-3">1.1.</span> 3d-printed parts</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 There are eight parts to print: the top and bottom shells, thumbstick and thumbstick guard, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in <code>/step</code> and <code>/dae</code> directories. <code>step</code> and <code>dae</code> are two 3d model file formats, any 3d printing service accepts at least one of the two.
 </p>
 
 
-<div id="orga9e8b12" class="figure">
+<div id="org295014d" class="figure">
 <p><img src="./graphics/3d-printed-parts.png" alt="3d-printed-parts.png" width="100%" />
 </p>
 <p><span class="figure-number">Figure 1: </span>3d-printed parts and their canonical name</p>
@@ -263,15 +263,15 @@ Here is a description of 3d-printing technologies I mentioned above: <a href="ht
 </div>
 </div>
 
-<div id="outline-container-orge609a54" class="outline-3">
-<h3 id="orge609a54"><span class="section-number-3">1.2.</span> Install threaded inserts to the printed parts</h3>
+<div id="outline-container-org8e026f3" class="outline-3">
+<h3 id="org8e026f3"><span class="section-number-3">1.2.</span> Install threaded inserts to the printed parts</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Out of the eight parts, top and bottom shell are fastened together by four screws, thumbstick guard and hanger are glued to the top shell, and trademark insert and side bars are friction-fit. The PCB board and USB breakout board are also screwed to the bottom shell.
 </p>
 
 <p>
-Therefore, we need to install threaded inserts to top and bottom shell. The parts are designed to use <a href="#orge469ecf">M2 screws</a> and <a href="#org3b8f50f">M2 threaded inserts</a>. Here is a tutorial on installing heat-set inserts: <i><a href="https://markforged.com/resources/blog/heat-set-inserts">Using Heat Set Inserts</a></i>. You need <a href="#orgc56bfb4">iron</a> and <a href="#org3c60dde">heat-set insert tip</a>.
+Therefore, we need to install threaded inserts to top and bottom shell. The parts are designed to use <a href="#org28ba061">M2 screws</a> and <a href="#org2bd4563">M2 threaded inserts</a>. Here is a tutorial on installing heat-set inserts: <i><a href="https://markforged.com/resources/blog/heat-set-inserts">Using Heat Set Inserts</a></i>. You need <a href="#orgf89295f">iron</a> and <a href="#orgfce73ae">heat-set insert tip</a>.
 </p>
 
 <p>
@@ -279,7 +279,7 @@ Install inserts on these places:
 </p>
 
 
-<div id="org33e88ba" class="figure">
+<div id="orgd867658" class="figure">
 <p><img src="./graphics/threaded-insert-position.png" alt="threaded-insert-position.png" width="100%" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Arrows points to the places to install inserts</p>
@@ -288,11 +288,11 @@ Install inserts on these places:
 </div>
 
 
-<div id="outline-container-orgf99b71d" class="outline-3">
-<h3 id="orgf99b71d"><span class="section-number-3">1.3.</span> Dye the parts</h3>
+<div id="outline-container-orgd025945" class="outline-3">
+<h3 id="orgd025945"><span class="section-number-3">1.3.</span> Dye the parts</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-Use synthetic dye because the parts are made of nylon. I used <a href="#orgf0a1c41">Rit Dyemore</a> since they are readily available in North America.
+Use synthetic dye because the parts are made of nylon. I used <a href="#orgc8db65d">Rit Dyemore</a> since they are readily available in North America.
 </p>
 
 <p>
@@ -309,11 +309,11 @@ You can also paint the parts. I imagine painting gets you closer to the original
 </div>
 </div>
 
-<div id="outline-container-orgf21ef56" class="outline-3">
-<h3 id="orgf21ef56"><span class="section-number-3">1.4.</span> Upload program to the microcontroller</h3>
+<div id="outline-container-orgb5821a0" class="outline-3">
+<h3 id="orgb5821a0"><span class="section-number-3">1.4.</span> Upload program to the microcontroller</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
-You need a computer, a micro-usb cable and the <a href="#orgd098917">Adafruit microcontroller</a>.
+You need a computer, a micro-usb cable and the <a href="#org7387107">Adafruit microcontroller</a>.
 </p>
 
 <ol class="org-ol">
@@ -324,8 +324,8 @@ You need a computer, a micro-usb cable and the <a href="#orgd098917">Adafruit mi
 </div>
 </div>
 
-<div id="outline-container-org995d536" class="outline-3">
-<h3 id="org995d536"><span class="section-number-3">1.5.</span> Print PCB boards</h3>
+<div id="outline-container-org4be263c" class="outline-3">
+<h3 id="org4be263c"><span class="section-number-3">1.5.</span> Print PCB boards</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 There are two boards to print, the main board (<code>/board</code>) and the USB breakout board (<code>/usb_breakout</code>). I used <a href="https://oshpark.com/">OSHPARK</a> to print PCB boards. There are cheaper providers I haven't tried like <a href="https://www.pcbway.com/">pcbway</a> and <a href="https://jlcpcb.com/">jlcpcb</a>.
@@ -337,17 +337,17 @@ Take OSHPARK as an example, go onto their website and click “browse for files�
 </div>
 </div>
 
-<div id="outline-container-org733603c" class="outline-3">
-<h3 id="org733603c"><span class="section-number-3">1.6.</span> Solder electronic parts</h3>
+<div id="outline-container-org3324cfe" class="outline-3">
+<h3 id="org3324cfe"><span class="section-number-3">1.6.</span> Solder electronic parts</h3>
 <div class="outline-text-3" id="text-1-6">
 <ol class="org-ol">
-<li>Solder the microcontroller to the <a href="#org6c24f8f">main board</a></li>
-<li>Solder the <a href="#org5470545">joystick</a> to the main board</li>
-<li>Solder the <a href="#org7f4ddc3">USB female connector</a> to the <a href="#org021841e">USB breakout board</a></li>
-<li>Connect the <a href="#org021841e">USB breakout board</a> to the <a href="#orgd5b050b">micro-USB breakout</a></li>
-<li>Solder <a href="#orgadfd819">resistors</a> to the main board</li>
-<li>Solder <a href="#org09c86d6">header pins</a> for the <a href="#orge377aa6">LED’s</a> to the main board</li>
-<li>Solder some <a href="#org415ce5b">jumper wires</a> to the LED’s and connect them to the header pins on the main board.</li>
+<li>Solder the microcontroller to the <a href="#orgde706cf">main board</a></li>
+<li>Solder the <a href="#org6e89ca1">joystick</a> to the main board</li>
+<li>Solder the <a href="#org5448c98">USB female connector</a> to the <a href="#org9f0a1c8">USB breakout board</a></li>
+<li>Connect the <a href="#org9f0a1c8">USB breakout board</a> to the <a href="#orga02cdc7">micro-USB breakout</a></li>
+<li>Solder <a href="#org5568d5f">resistors</a> to the main board</li>
+<li>Solder <a href="#org10c06a3">header pins</a> for the <a href="#orgc5c6d8b">LED’s</a> to the main board</li>
+<li>Solder some <a href="#org027f181">jumper wires</a> to the LED’s and connect them to the header pins on the main board.</li>
 </ol>
 
 <p>
@@ -360,8 +360,8 @@ TODO (solder instruction graphics)
 </div>
 </div>
 
-<div id="outline-container-org9750873" class="outline-3">
-<h3 id="org9750873"><span class="section-number-3">1.7.</span> Assemble</h3>
+<div id="outline-container-orgf350d8b" class="outline-3">
+<h3 id="orgf350d8b"><span class="section-number-3">1.7.</span> Assemble</h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 Bottom shell:
@@ -396,47 +396,48 @@ Assemble:
 </div>
 </div>
 
-<div id="outline-container-org3354408" class="outline-2">
-<h2 id="org3354408"><span class="section-number-2">2.</span> Parts listing</h2>
+<div id="outline-container-org276b0b9" class="outline-2">
+<h2 id="org276b0b9"><span class="section-number-2">2.</span> Parts listing</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 3d-printed parts (find under <code>/step</code> or <code>/dae</code>):
 </p>
 <ul class="org-ul">
-<li>Top shell <a id="org7670e00"></a></li>
-<li>Bottom shell <a id="orge0bb909"></a></li>
-<li>Thumbstick <a id="orga8e6dbe"></a></li>
-<li>Thumbstick guard <a id="orgae4ccb2"></a></li>
-<li>Side bars <a id="orgcea2a1f"></a></li>
-<li>Trademark insert <a id="orgb438ba9"></a></li>
-<li>Hanger <a id="orga25772b"></a></li>
+<li>Top shell <a id="org1c5ab4d"></a></li>
+<li>Bottom shell <a id="orgf13422d"></a></li>
+<li>Thumbstick <a id="orgb5caa54"></a></li>
+<li>Thumbstick guard <a id="org65061ef"></a></li>
+<li>Side bars <a id="orgd0d4616"></a></li>
+<li>Trademark insert <a id="org88b21a7"></a></li>
+<li>Hanger <a id="org4925b4c"></a></li>
 </ul>
 
 <p>
 Mechanical parts:
 </p>
 <ul class="org-ul">
-<li>M2<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> <a href="https://www.amazon.com/s?k=M2+screws+12mm&amp;crid=1D6SZEUYTS1PO&amp;sprefix=m2+screws+12m%2Caps%2C265&amp;ref=nb_sb_noss_2">screws</a> (12mm) × 8 (anything longer than 8mm and is not too long is fine) <a id="orge469ecf"></a></li>
-<li>Heat-set<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> M2 <a href="https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&amp;crid=2D95DDIXZW9M3&amp;sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&amp;ref=nb_sb_noss">threaded inserts</a> (4mm × 3.5mm) (length × outer diameter) × 8 <a id="org3b8f50f"></a></li>
+<li>M2<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> <a href="https://www.amazon.com/s?k=M2+screws+12mm&amp;crid=1D6SZEUYTS1PO&amp;sprefix=m2+screws+12m%2Caps%2C265&amp;ref=nb_sb_noss_2">screws</a> (8mm in length) × 4 <a id="org28ba061"></a></li>
+<li>M2 screws (4mm) × 4</li>
+<li>Heat-set<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> M2 <a href="https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&amp;crid=2D95DDIXZW9M3&amp;sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&amp;ref=nb_sb_noss">threaded inserts</a> (4mm × 3.5mm) (length × outer diameter) × 8 <a id="org2bd4563"></a></li>
 </ul>
 
 <p>
 Printed PCB boards:
 </p>
 <ul class="org-ul">
-<li>Main board (<code>/board/upload.zip</code>) <a id="org6c24f8f"></a></li>
-<li>USB breakout (<code>usb_breakout/upload.zip</code>) <a id="org021841e"></a></li>
+<li>Main board (<code>/board/upload.zip</code>) <a id="orgde706cf"></a></li>
+<li>USB breakout (<code>usb_breakout/upload.zip</code>) <a id="org9f0a1c8"></a></li>
 </ul>
 
 <p>
 Electronic parts:
 </p>
 <ul class="org-ul">
-<li><a href="https://www.adafruit.com/product/3406">Adafruit Feather nRF52 Bluefruit LE (nRF52832)</a> (nRF52840 should also work if you know how to modify the program) <a id="orgd098917"></a></li>
-<li><a href="https://www.adafruit.com/product/2011">Adafruit Lithium Ion Battery 3.7V 2000mAh</a> <a id="org7c1c928"></a></li>
-<li><a href="https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&amp;crid=1QX1NDCLCAWQT&amp;sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&amp;ref=nb_sb_noss_1">Alps RKJXV1224 joystick</a> (aka switch pro controller replacement joystick) <a id="org5470545"></a></li>
-<li><a href="https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA">Molex USB 2.0 type-A female vertical mount connector</a> (product number ‎1050570001‎) <a id="org7f4ddc3"></a></li>
-<li><a href="https://www.digikey.com/en/products/detail/sparkfun-electronics/BOB-10031/5673778?s=N4IgTCBcDaIIwFYBsAOAtHOBOMaByAIoHAEIAugL5A">Sparkfun USB micro-B male breakout</a> (product number BOB-10031) <a id="orgd5b050b"></a></li>
+<li><a href="https://www.adafruit.com/product/3406">Adafruit Feather nRF52 Bluefruit LE (nRF52832)</a> (nRF52840 should also work if you know how to modify the program) <a id="org7387107"></a></li>
+<li><a href="https://www.adafruit.com/product/2011">Adafruit Lithium Ion Battery 3.7V 2000mAh</a> <a id="orgf797159"></a></li>
+<li><a href="https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&amp;crid=1QX1NDCLCAWQT&amp;sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&amp;ref=nb_sb_noss_1">Alps RKJXV1224 joystick</a> (aka switch pro controller replacement joystick) <a id="org6e89ca1"></a></li>
+<li><a href="https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA">Molex USB 2.0 type-A female vertical mount connector</a> (product number ‎1050570001‎) <a id="org5448c98"></a></li>
+<li><a href="https://www.digikey.com/en/products/detail/sparkfun-electronics/BOB-10031/5673778?s=N4IgTCBcDaIIwFYBsAOAtHOBOMaByAIoHAEIAugL5A">Sparkfun USB micro-B male breakout</a> (product number BOB-10031) <a id="orga02cdc7"></a></li>
 <li>Micro USB cable (for uploading the program to the microcontroller)</li>
 <li><a href="https://www.amazon.com/s?k=USB+male+to+USB+male&amp;ref=nb_sb_noss">USB male to USB male cable</a> (for charging CQ-80)</li>
 </ul>
@@ -445,21 +446,21 @@ Electronic parts:
 Electronic consumables:
 </p>
 <ul class="org-ul">
-<li><a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm red LED</a> × 1 (top light) <a id="orge377aa6"></a></li>
+<li><a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm red LED</a> × 1 (top light) <a id="orgc5c6d8b"></a></li>
 <li><a href="https://www.amazon.com/s?k=3mm+led&amp;crid=4JJ4EKJP17Q3&amp;sprefix=3mm+le%2Caps%2C131&amp;ref=nb_sb_noss_2">3mm green LED</a>  × 1 (front lamp)</li>
 <li><a href="https://www.amazon.com/s?k=8mm+led&amp;crid=FJQQ6UVY7NAI&amp;sprefix=8mm+led%2Caps%2C140&amp;ref=nb_sb_noss_1">8mm white LED</a> × 1 (head light)</li>
 <li><a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm warm-white LED</a> × 2 (side lights)</li>
-<li><a href="https://www.amazon.com/s?k=resistors&amp;crid=1G02OHEC2Z4WT&amp;sprefix=resistors%2Caps%2C129&amp;ref=nb_sb_noss_1">Resistors</a>, 220ω × 4, 100Kω × 1. The resistance doesn’t have to be exact, 220ω ones can be replaced by any resistor in the range of 50 to 300 ohms, and the 100K one can be replaced by any in the 10K-100K range. <a id="orgadfd819"></a></li>
-<li><a href="https://www.amazon.com/s?k=jumper+wires&amp;crid=JYYBJ45HZ3F3&amp;sprefix=jumper+wire%2Caps%2C144&amp;ref=nb_sb_noss_1">Jumper wires (female)</a> <a id="org415ce5b"></a></li>
-<li><a href="https://www.amazon.com/s?k=header+pins&amp;ref=nb_sb_noss">Header pins</a> <a id="org09c86d6"></a></li>
-<li><a href="https://www.amazon.com/s?k=lcd+tape&amp;crid=2K79ZJAOILAMF&amp;sprefix=lcd+tape%2Caps%2C127&amp;ref=nb_sb_noss_1">LCD tape</a> (the ones used to tape screens and batteries in smart phones) <a id="orgd461dbe"></a></li>
+<li><a href="https://www.amazon.com/s?k=resistors&amp;crid=1G02OHEC2Z4WT&amp;sprefix=resistors%2Caps%2C129&amp;ref=nb_sb_noss_1">Resistors</a>, 220ω × 4, 100Kω × 1. The resistance doesn’t have to be exact, 220ω ones can be replaced by any resistor in the range of 50 to 300 ohms, and the 100K one can be replaced by any in the 10K-100K range. <a id="org5568d5f"></a></li>
+<li><a href="https://www.amazon.com/s?k=jumper+wires&amp;crid=JYYBJ45HZ3F3&amp;sprefix=jumper+wire%2Caps%2C144&amp;ref=nb_sb_noss_1">Jumper wires (female)</a> <a id="org027f181"></a></li>
+<li><a href="https://www.amazon.com/s?k=header+pins&amp;ref=nb_sb_noss">Header pins</a> <a id="org10c06a3"></a></li>
+<li><a href="https://www.amazon.com/s?k=lcd+tape&amp;crid=2K79ZJAOILAMF&amp;sprefix=lcd+tape%2Caps%2C127&amp;ref=nb_sb_noss_1">LCD tape</a> (the ones used to tape screens and batteries in smart phones) <a id="orgb6104f7"></a></li>
 </ul>
 
 <p>
 Dye:
 </p>
 <ul class="org-ul">
-<li><a href="https://www.ritdye.com/products/sandstone/">Rit DyeMore Sand Stone</a> <a id="orgf0a1c41"></a></li>
+<li><a href="https://www.ritdye.com/products/sandstone/">Rit DyeMore Sand Stone</a> <a id="orgc8db65d"></a></li>
 <li><a href="https://www.ritdye.com/products/super-pink/">Rit DyeMore Super Pink</a></li>
 <li><a href="https://www.ritdye.com/products/racing-red/">Rit DyeMore Racing Red</a></li>
 </ul>
@@ -468,15 +469,15 @@ Dye:
 Tools:
 </p>
 <ul class="org-ul">
-<li>Soldering kit (<a href="https://www.amazon.com/s?k=soldering+iron&amp;crid=3UY9KIX3YB4JO&amp;sprefix=soldering+iron%2Caps%2C133&amp;ref=nb_sb_noss_1">iron &amp; tin</a>, <a href="https://www.amazon.com/s?k=third+hand&amp;crid=Y0U8J28EO3EJ&amp;sprefix=third+hand%2Caps%2C139&amp;ref=nb_sb_noss_1">third hand</a>) (for soldering and installing threaded inserts) <a id="orgc56bfb4"></a></li>
-<li><a href="https://www.amazon.com/dp/B08B17VQLD?psc=1&amp;ref=ppx_yo2ov_dt_b_product_details">Heat-set insert tip</a> (for installing threaded inserts) <a id="org3c60dde"></a></li>
+<li>Soldering kit (<a href="https://www.amazon.com/s?k=soldering+iron&amp;crid=3UY9KIX3YB4JO&amp;sprefix=soldering+iron%2Caps%2C133&amp;ref=nb_sb_noss_1">iron &amp; tin</a>, <a href="https://www.amazon.com/s?k=third+hand&amp;crid=Y0U8J28EO3EJ&amp;sprefix=third+hand%2Caps%2C139&amp;ref=nb_sb_noss_1">third hand</a>) (for soldering and installing threaded inserts) <a id="orgf89295f"></a></li>
+<li><a href="https://www.amazon.com/dp/B08B17VQLD?psc=1&amp;ref=ppx_yo2ov_dt_b_product_details">Heat-set insert tip</a> (for installing threaded inserts) <a id="orgfce73ae"></a></li>
 <li>Pot, tong, gloves, etc (for dyeing)</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc00de3e" class="outline-2">
-<h2 id="orgc00de3e"><span class="section-number-2">3.</span> Cost</h2>
+<div id="outline-container-org93d727e" class="outline-2">
+<h2 id="org93d727e"><span class="section-number-2">3.</span> Cost</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Making the CQ-80 terminal costed me roughly $580, but part of it is because I have to buy parts in quantity and I made some unnecessary purchase. I can probably put the extra parts I have into kits for anyone want to make CQ-80. If I sell the kit for $50, plus the parts below, you should manage to make a CQ-80 in around $300, I think?

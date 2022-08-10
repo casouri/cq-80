@@ -102,7 +102,8 @@ Assemble:
 - Hanger <<hanger>>
 
 Mechanical parts:
-- M2[fn:m2] [[https://www.amazon.com/s?k=M2+screws+12mm&crid=1D6SZEUYTS1PO&sprefix=m2+screws+12m%2Caps%2C265&ref=nb_sb_noss_2][screws]] (12mm) × 8 (anything longer than 8mm and is not too long is fine) <<M2 screws>>
+- M2[fn:m2] [[https://www.amazon.com/s?k=M2+screws+12mm&crid=1D6SZEUYTS1PO&sprefix=m2+screws+12m%2Caps%2C265&ref=nb_sb_noss_2][screws]] (8mm in length) × 4 <<M2 screws>>
+- M2 screws (4mm) × 4
 - Heat-set[fn:heat-set] M2 [[https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&crid=2D95DDIXZW9M3&sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&ref=nb_sb_noss][threaded inserts]] (4mm × 3.5mm) (length × outer diameter) × 8 <<M2 threaded inserts>>
 
 Printed PCB boards:
