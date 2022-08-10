@@ -1,6 +1,7 @@
 #+TITLE: CQ-80 Terminal (NAMACO端末)
 #+HTML_HEAD: <link id="style" rel="stylesheet" type="text/css" href="./style.css"/>
 #+LANGUAGE: zh-CN
+#+OPTIONS: ^:nil
 
 * 展示
 
@@ -42,7 +43,7 @@
 
 * 制作指南
 
-这种终端还是很容易做的，毕竟部件和电路板都是打印的。只需要需要给部件染色，焊一点电子元件，上传程序到微型处理器上，最后组装到一起。
+这个终端还是很容易做的，毕竟部件和电路板都是打印的。只需要需要给部件染色，焊一点电子元件，上传程序到微型处理器上，最后组装到一起就行了。
 
 因为我在北美，所以我用来 3D 打印的网站（[[https://shapeways.com][Shapeways]]）和购买各种零部件的网站对国内的乌贼来说可能没什么参考价值，想做的乌贼需要自己找一找这样的网站和商店。
 
@@ -52,13 +53,13 @@
 #+caption: 3D 打印的部件和名字标注
 #+attr_html: :width 100%
 #+attr_latex: :width 400px
-[[./graphics/3d-printed-parts.png]]
+[[./graphics/3d-printed-parts-zh.png]]
 
 找到提供 3D 打印的网站以后，一般上传模型文件然后选择制作工艺的材料，和其他一些细节就可以了。
 
 我推荐用 MJF 或者 SLS 的工艺和尼龙12（PA12）的材料。PA12很结实也不贵。SLA 工艺也可以，但是会更贵。
 
-因为铭牌又小又精细，SLA 就比较适合。SLA 打印精度更高。材的话感觉都可以。
+因为铭牌又小又精细，SLA 就比较适合。SLA 打印精度更高。材料的话感觉SLA支持的都可以。
 
 别用 FDM，就是家用的 3D 打印机的工艺，精度太低，而且有些部件的结构 FDM 打印不了。
 
@@ -78,7 +79,7 @@
 
 
 ** 给部件染色
-给部件染色要用尼龙染料，因为部件是尼龙做的。我找的染料和颜色配方都是北美的，国内的乌贼自己得找一找。我主体的牙白用的这个颜色：[[https://www.ritdye.com/color-formulas/special-white-for-nylon/?type=203&hue=0&collection=0&collaboration=0][Special White]]，紫红色的部份用的这个颜色：[[https://www.ritdye.com/color-formulas/red-candies/?type=203&hue=0&collection=0&collaboration=0][Red Candies]]。
+给部件染色要用尼龙染料，因为部件是尼龙做的。我找的染料和颜色配方都是北美的，国内的乌贼自己得找一找。主体的奶灰我用的这个颜色：[[https://www.ritdye.com/color-formulas/special-white-for-nylon/?type=203&hue=0&collection=0&collaboration=0][Special White]]，紫红色的部份用的这个颜色：[[https://www.ritdye.com/color-formulas/red-candies/?type=203&hue=0&collection=0&collaboration=0][Red Candies]]。
 
 有能力的乌贼也可以喷漆，我感觉喷漆可能更还原，因为其实终端上有不只一个颜色。喷漆的话表面估计也会更光滑。
 
@@ -90,7 +91,7 @@
 1. 用 Arduino IDE 打开 =/arduino/controller/controller.ino=​，把程序上传到处理器。
 
 ** 打印电路板
-我们要打印两个电路板，一个主板（=/board=），一个 USB 接口（=/usb_breakout=）。国内打印电路板的网站应该挺多的，随便找一个，把 zip 文件上传到网站上（=/board/board.zip= 和 =/usb_breakout/usb_breakout.zip=）就行了。
+我们要打印两个电路板，一个主板（​=/board=​），一个 USB 接口（​=/usb_breakout=​）。国内打印电路板的网站应该挺多的，随便找一个，把 zip 文件上传到网站上（​=/board/board.zip= 和 =/usb_breakout/usb_breakout.zip=​）就行了。
 
 
 ** 焊接电子部件

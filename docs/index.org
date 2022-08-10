@@ -1,5 +1,6 @@
 #+TITLE: CQ-80 Terminal (NAMACO端末)
 #+HTML_HEAD: <link id="style" rel="stylesheet" type="text/css" href="./style.css"/>
+#+OPTIONS: ^:nil
 
 * How to make
 
