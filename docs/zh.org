@@ -63,12 +63,12 @@
 
 别用 FDM，就是家用的 3D 打印机的工艺，精度太低，而且有些部件的结构 FDM 打印不了。
 
-感兴趣的乌贼可以看看这篇对 3D 打印工艺的介绍：[[https://formlabs.com/blog/fdm-vs-sla-vs-sls-how-to-choose-the-right-3d-printing-technology/][3D Printing Technology Comparison: FDM vs. SLA vs. SLS]]. SLS 和 MJF 很相似，里面说的关于 SLS 的东西基本上对 MJF 也一样。
+感兴趣的乌贼可以看看这篇对 3D 打印工艺的介绍：[[https://formlabs.com/blog/fdm-vs-sla-vs-sls-how-to-choose-the-right-3d-printing-technology/][3D Printing Technology Comparison: FDM vs. SLA vs. SLS]]。SLS 和 MJF 很相似，里面说的关于 SLS 的东西基本上对 MJF 也一样。
 
 ** 安装螺母
 八个部件里面，顶壳底壳靠四个螺丝拧紧，摇杆环和绳挂粘在上壳上，铭牌和左右栏杆靠硬塞。电路板和USB接口也靠螺丝拧在底壳上。
 
-我们需要在上下壳上安装螺母。这些部件设计上要求 [[M2 screws][M2 螺丝]] 和 [[M2 threaded inserts][M2 热熔螺母]]。网上应该有安装热熔螺母的教程，基本上就是把螺母放在孔上，然后用电烙铁加热一下就会融化周围的塑料，使螺母嵌进去。
+我们需要在上下壳上安装螺母。这些部件设计上要求 [[M2 screws][M2 螺丝]]和 [[M2 threaded inserts][M2 热熔螺母]]。网上应该有安装热熔螺母的教程，基本上就是把螺母放在孔上，然后用电烙铁加热一下就会融化周围的塑料，使螺母嵌进去。
 
 热熔螺母要装在这些地方：
 
@@ -95,12 +95,12 @@
 
 
 ** 焊接电子部件
-1. 把微型处理器焊到 [[main board][主板]]上
+1. 把微型处理器焊到[[main board][主板]]上
 1. 把[[joystick][摇杆]]焊到主板上
 1. 把[[usb type-A connector][USB 接口]]焊到[[usb breakout][USB接口板]]上
 1. 把[[usb breakout][USB 接口板]]连到[[micro usb breakout][micro-USB 接口板]]上
 1. 把[[resistors][电阻]]焊到主板上
-1. 把[[header pins][金属接头]] 焊到主板 [[LED’s][LED]] 的位置上
+1. 把[[header pins][金属接头]]焊到主板 [[LED’s][LED]] 的位置上
 1. 给 LED连上[[jumper wires][电线]]
 
 当然，LED想要什么颜色都可以，只要尺寸对就行。
