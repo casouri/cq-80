@@ -146,7 +146,7 @@ Assemble:
 #+attr_latex: :width 400px
 [[./img/assemble-bottom-2.jpeg]]
 
-* Caring on the paint
+* Caring
 Even though we sprayed a protective top-coat, the paint is still easily damaged: I’ve had small dents on the CQ-80 that are deep enough to reveal underling primer. I guess spray painitng will give you a thinner and more robust paint, I’m also contemplating on using auto top-coats, I’ll report back with the result.
 
 Anyway, the best way to protect the paint job is to not knock anything into it. Put it in a bag or a crystal coffin so nothing sharp can hit it.
