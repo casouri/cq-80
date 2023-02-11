@@ -7,7 +7,7 @@ This repository contains all the source files for the 3d model, PCB board design
 For more pics, visit [[https://casouri.github.io/cq-80][CQ-80 Replica]].
 
 #+attr_html: :width 100%
-[[./docs/img/top-1.jpeg]]
+[[./docs/img/demo-top.jpeg]]
 
 #+attr_html: :width 100%
 [[./docs/img/cq-80 promo.jpg]]
