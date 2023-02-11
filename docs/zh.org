@@ -14,7 +14,7 @@
 (promo)
 
 | 长按摇杆      | 匹配蓝牙设备  |
-| 按一下摇杆    | 不知道干啥用  |
+| 按一下摇杆    | 开机/关机     |
 | 上推摇杆      | 切换灯光      |
 | 下推摇杆      | 播放/暂停     |
 | 左/右推摇杆   | 上/下一首     |
@@ -160,7 +160,7 @@ TODO (solder instruction graphics)
 - [[https://www.amazon.com/s?k=3mm+led&crid=4JJ4EKJP17Q3&sprefix=3mm+le%2Caps%2C131&ref=nb_sb_noss_2][3mm green LED]]  × 1 （电量指示灯）
 - [[https://www.amazon.com/s?k=8mm+led&crid=FJQQ6UVY7NAI&sprefix=8mm+led%2Caps%2C140&ref=nb_sb_noss_1][8mm white LED]] × 1 （头灯）
 - [[https://www.amazon.com/s?k=5mm+led&crid=1DRG7DU8VXT7J&sprefix=5mm+led%2Caps%2C145&ref=nb_sb_noss_1][5mm warm-white LED]] × 2 （副灯）
-- [[https://www.amazon.com/s?k=resistors&crid=1G02OHEC2Z4WT&sprefix=resistors%2Caps%2C129&ref=nb_sb_noss_1][电阻]]，220ω × 4，100Kω × 1。具体电阻不需要很精确，差不多就行。<<resistors>>
+- [[https://www.amazon.com/s?k=resistors&crid=1G02OHEC2Z4WT&sprefix=resistors%2Caps%2C129&ref=nb_sb_noss_1][电阻]]，220Ω × 4，100KΩ × 1。具体电阻不需要很精确，220Ω的50到300都可，100K的10K–100K都行。<<resistors>>
 - [[https://www.amazon.com/s?k=jumper+wires&crid=JYYBJ45HZ3F3&sprefix=jumper+wire%2Caps%2C144&ref=nb_sb_noss_1][跳线（母）]]<<jumper wires>>
 - [[https://www.amazon.com/s?k=header+pins&ref=nb_sb_noss][金属接口]]<<header pins>>
 - [[https://www.amazon.com/s?k=lcd+tape&crid=2K79ZJAOILAMF&sprefix=lcd+tape%2Caps%2C127&ref=nb_sb_noss_1][LCD 胶带]]（手机里粘屏幕电池的那种） <<LCD tape>>

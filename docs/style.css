@@ -4,3 +4,12 @@ body {
     font-size: 14pt;
     font-family: Charter, serif;
 }
+
+:link, :visited {
+    text-decoration: none;
+    color: #4D16C4;
+}
+
+:link:hover {
+    text-decoration: underline;
+}
