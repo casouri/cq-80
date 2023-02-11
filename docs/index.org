@@ -6,7 +6,7 @@ Custom CQ-80 terminal replica! Not only is it 100% accurate, I also added Blueto
 
 This repository contains all the source files for the 3d model, PCB board design, etc. For a guide on making your own replica, visit: [[https://casouri.github.io/cq-80/][DIY Guide for CQ-80 Replica]].
 
-#+CAPTION: Top view.
+#+CAPTION: Top view. The actual color is more grey than in the photo.
 #+attr_html: :width 100%
 [[./img/demo-top.jpeg]]
 

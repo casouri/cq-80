@@ -136,7 +136,7 @@ Assemble:
 1. Screw the top and bottom shell together
 1. Install side bars.
 
-#+caption: Installing the USB breakout board. Technically you only need to connect the +5 and GNU pins, like I did here. These two pins allows you to charge the battery through the USB port. But if you connect all four pins, you can use the USB port for uploading programs as well.
+#+caption: Installing the USB breakout board. Technically you only need to connect the +5 and GND pins, like I did here. These two pins allows you to charge the battery through the USB port. But if you connect all four pins, you can use the USB port for uploading programs as well.
 #+attr_html: :width 100%
 #+attr_latex: :width 400px
 [[./img/assemble-bottom-1.jpeg]]
