@@ -1,3 +1,25 @@
-#+TITLE: CQ-80 Terminal (NAMACO端末)
+#+TITLE: CQ-80 Terminal (NAMACO端末) replica
 
-[[https://casouri.github.io/cq-80/zh]] 上有详细介绍和制作指南！Visit [[https://casouri.github.io/cq-80/]] for more detail and a guid on how to make it.
+Custom CQ-80 terminal replica! Not only is it 100% accurate, I also added Bluetooth music playback control feature. The shell is 3d printed, and the electronics are made of off-the-shelf parts.
+
+This repository contains all the source files for the 3d model, PCB board design, etc. For a guide on making your own replica, visit: [[https://casouri.github.io/cq-80/guide-en.html][DIY Guide for CQ-80 Replica]].
+
+For more pics, visit [[https://casouri.github.io/cq-80][CQ-80 Replica]].
+
+#+attr_html: :width 100%
+[[./docs/img/top-1.jpeg]]
+
+#+attr_html: :width 100%
+[[./docs/img/cq-80 promo.jpg]]
+
+#+attr_html: :width 100%
+[[./docs/img/cq-80 screenshot.jpg]]
+
+#+attr_html: :width 100%
+[[./docs/img/demo-head-lamp.jpeg]]
+
+#+attr_html: :width 100%
+[[./docs/img/demo-side.jpeg]]
+
+#+attr_html: :width 100%
+[[./docs/img/demo-top-close-up.jpeg]]

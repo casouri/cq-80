@@ -2,216 +2,81 @@
 #+HTML_HEAD: <link id="style" rel="stylesheet" type="text/css" href="./style.css"/>
 #+OPTIONS: ^:nil
 
-* Overview
-The CQ-80 replica is made of 3d-printed parts and (mostly) off-the-shelf electronic parts. The electronics allow it to connect to a computer via Bluetooth and control music playback. (It’s possible to exclude electronics, see below.)
+Custom CQ-80 terminal replica! Not only is it 100% accurate, I also added Bluetooth music playback control feature. The shell is 3d printed, and the electronics are made of off-the-shelf parts.
 
-To make the replica, you need to 3d-print the parts, paint them, buy all the electronics, solder them, upload a program to the microcontroller, and finally assemble everything together. I’d say that fitting the parts and painting them are the most difficult and time-consuming steps in the whole process.
+This repository contains all the source files for the 3d model, PCB board design, etc. For a guide on making your own replica, visit: [[https://casouri.github.io/cq-80/][DIY Guide for CQ-80 Replica]].
 
-Disclaimer: I’m an utter armature on 3d modeling, electronics and model painting. So dispite my best effort, there are short-comings all over the place. If you have any suggestion/feedback, I appreciate them very much.
-
-* Download files
-
-Download model and PCB files from here: TODO (it just links to the GitHub release). Unpack it and you should see one directory, =stl=, and two zip files, =board.zip=, =usb_breakout.zip=. The =stl= directory contains 3d model files, and =board.zip= and =usb_breakout.zip= are files for printing the PCB board. Their use are explained as we go through each step.
-
-* 3d-printed parts
-There are eight parts: the top and bottom shells, thumbstick and thumbstick guard, front bar, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in the =stl= folder. I combined smaller parts together into a single file, so you only need to print three main parts: the top shell, the bottom shell, and the small parts combined.
-
-I made the trade mark insert a separate piece, so you can design a custom insert and use that instead.
-
-#+caption: 3d-printed parts and their canonical name
+#+CAPTION: Top view.
 #+attr_html: :width 100%
-#+attr_latex: :width 400px
-[[./img/parts-expl.jpeg]]
+[[./img/demo-top.jpeg]]
 
-I recommend printing using resin. MJF or SLS are ok, but they have fuzzy detail and uneven surface, and we don’t need the strength they provide. A strong resin is more than enough for our parts. Don’t use FDM. Its resolution is too low, and some structures in the parts simply cannot be printed with FDM.
-
-I used pcbway.com for printing, they so much cheaper than sites like Shapeways and Xometry, and the result is not bad. If you are not concerned with budget, you can try Xometry, their quality is top-notch (but I haven’t tried their resin prints, only SLS prints). On pcbway.com I printed the top and bottom shell with Resin Somos EvoLVe 128, and the small parts with Resin UTR 8220. All three parts combined costs around $50 including shipping, really can’t complain.
-
-[Here is a description of 3d-printing technologies I mentioned above: [[https://formlabs.com/blog/fdm-vs-sla-vs-sls-how-to-choose-the-right-3d-printing-technology/][3D Printing Technology Comparison: FDM vs. SLA vs. SLS]]. SLS and MJF are quite similar, what it says about SLS pretty much applies to MJF too.]
-
-* Fitting the parts
-
-Once you receive the parts, you need to sand/file them a bit here and their so everything fits together. The fitting in the digital model is pretty tight, since you can always sand down tight fits but it’s really hard to fix a loose fit.
-
-You can get some small files (round, square and flat) from local hobby stores, they are very handy for fitting parts.
-
-* Install threaded inserts to the printed parts
-Out of the eight parts, top and bottom shell are fastened together by two screws, thumbstick guard and hanger are glued to the top shell, and trademark insert and side bars are friction-fit. The PCB board and USB breakout board are screwed into the bottom shell.
-
-Therefore, we need to install threaded inserts to top and bottom shells. The parts are designed to use [[M2 screws][M2 screws]] and [[M2 threaded inserts][M2 threaded inserts]]. Here is a tutorial on installing heat-set inserts: /[[https://markforged.com/resources/blog/heat-set-inserts][Using Heat Set Inserts]]/. You need [[soldering iron][iron]] and [[heat-set insert tip][heat-set insert tip]] (or just the iron tip, it works ok). /Do not press too hard/ when installing threaded inserts: the resin is strong but brittle, and is heat-resistant, so pressing too hard will break it. Be patient and press it in little by little.
-
-Install inserts on these places:
-
-#+caption: Top shell
+#+CAPTION: The original.
 #+attr_html: :width 100%
-#+attr_latex: :width 400px
-[[./img/top-expl.jpeg]]
+[[./img/cq-80 promo.jpg]]
 
-#+caption: Bottom shell
+#+CAPTION: 8, my beloved...
 #+attr_html: :width 100%
-#+attr_latex: :width 400px
-[[./img/bottom-expl.jpeg]]
+[[./img/cq-80 screenshot.jpg]]
 
-* Uploading the program to the microcontroller
-You need a computer, a micro-usb cable and the [[feather nrf52][Adafruit microcontroller]].
-
-1. Follow this guide—[[https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-bsp-setup][Arduino Support Setup]]—to install Arduino IDE and support software. The board we use is nRF52832, follow instructions for nRF52832 and ignore ones for nRF52840.
-1. Test that everything is working fine by following this guide—[[https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-board-setup][Arduino Board Testing]]. Don’t skip this step.
-1. Use the Arduino IDE to open =/arduino/controller/controller.ino=, and hit the right-pointing arrow to upload the program. The board and port settings should be already set by the previous step when we test the board.
-
-* Printing PCB boards
-There are two boards to print, the main board (=board.zip=) and the USB breakout board (=usb_breakout.zip=). I used [[https://oshpark.com/][OSHPARK]] to print PCB boards. There are cheaper providers that I haven’t tried like [[https://www.pcbway.com/][pcbway]] and [[https://jlcpcb.com/][jlcpcb]].
-
-Take OSHPARK as an example, go onto their website and click “browse for files”, and choose the zip file for the board, upload it, then hit continue all the way. Use USPS for shipping ;-)
-
-* Soldering electronic parts
-/Test before soldering any parts!/ Test that the LED’s and resistors work! You’ll be in a world of pain if you find out a resister is bad /after/ you’ve soldered it to the board.
-
-1. Solder the microcontroller to the [[main board][main board]]
-1. Solder the [[joystick][joystick]] to the main board (you need to clip the two nubs under the joystick part because I forgot to create holes on the pcb board design)
-1. Solder the [[usb type-A connector][USB female connector]] to the [[usb breakout][USB breakout board]]
-1. Connect the [[usb breakout][USB breakout board]] to the [[misco-USB connector][micro-USB connector]] (the square hole on the breakout is ground)
-1. Solder [[resistors][resistors]] to the main board (for the LED’s anything around 100ω is fine, for the battery detection, use something large like 10kω)
-1. Solder [[header pins][header pins]] for the [[LED’s][LED’s]] to the main board
-1. Solder some [[jumper wires][jumper wires]] to the LED’s and connect them to the header pins on the main board.
-
-Of course, you can use LED’s of whatever color you like, just make sure the dimensions (5mm, 3mm, 8mm) are right.
-
-#+caption: Main board
+#+CAPTION: Font of the terminal.
 #+attr_html: :width 100%
-#+attr_latex: :width 400px
-[[./img/board-expl.jpeg]]
+[[./img/demo-front.jpeg]]
 
-#+caption: USB board.
+#+CAPTION: Compare to the in-game model.
 #+attr_html: :width 100%
-#+attr_latex: :width 400px
-[[./img/usb-expl.jpeg]]
+[[./img/front-render.png]]
 
-* Painting the parts
-** Materials
-
-I don’t have aerospray so I hand-painted the parts. I tried to use paints that are allegedly friendly to hand-painting. You can find a list of the paints I used below in the [[painting][painting]] section.
-
-If you don’t want to hand-paint and don’t have aerospray, you can get some spray cans and spray paint. I didn’t spray paint because I couldn’t find the exact color I want. When buying spray paint, make sure to by spray paints for modeling, like Tamiya and Mr. Hobby, not ones for graffiti or painting furnitures.
-
-I used [[Pallid Wych Flesh][Pallid Wych Flesh]] (off-white) for the primary color of the top shell, and [[Pallid Wych Flesh][Pallid Wych Flesh]] mixing in a little bit [[Rakarth Flesh][Rakarth Flesh]] (brownish) for the bottom shell and the alt color on the top shell. For the violet red color (thumbstick, etc), I mixed [[Violet Red][Violet Red]] plus a little bit of [[Carmine Red][Carmine Red]]. Carmine Red is probably optional, if you don’t mind your thumbstick to be a bit more purple than the official one.
-
-This is the rough ratio for the paints, to the best of my recollection:
-
-- Top shell :: Pallid Wych Flesh
-- Bottom shell & top shell alt :: Pallid Wych Flesh : Rakarth Flesh = 7 : 1, maybe
-- Thumbstick, etc :: Violet Red : Carmine Red = 5 : 1, possibly
-- Grey parts :: Just the color of light grey primer (see below)
-
-I really don’t remember... Luckily the two colors that requires mixing have large rooms of error.
-
-** Steps for painting
-I learned this from watching accumulatively ~4.78 hrs of gunpla and 3d printing videos on YouTube, so don’t take my word for everything.
-
-But anyway, you need to first fill the gaps like print-lines or other imperfections with [[acrylic putty][acrylic putty]], then sand the surfaces smooth. It should be very smooth to the touch, because any small imperfections you can’t see right now will show when you put on paint. You can get some [[./photos/sanding-sponge.jpeg][sanding sponge]] which are very handy when sanding small models like this (you can find them at a local hobby store). I suggest you leave the putty to dry for at least a couple hours, ideally overnight, before sanding. Just casually put on some putty, let it dry, sand it next day, add more putty if necessary, and repeat. Take it slow and easy. Don’t rush it or get it done in one afternoon. This advice applies to the following steps as well.
-
-Once the surface is smooth, prime your parts with a [[light grey primer][light grey primer]]. For grey parts this is all they need. For other parts, the next step is to apply paint.
-
-I suggest you first watch some hand-painting gunpla/miniature tutorials on YouTube before doing it, because it’s not too easy. Buy some nice, soft acrylic painting brush, don’t use cheap ones. The key seems to be thinning the paint just right: not too thin and not too thick. Also be patient and work layer by layer. The first and second layers are going to look really bad and it’s fine, after several layers you should get a pretty uniform color. If you are patient and apply thin layers, there is a larger room of error.
-
-Finally, let the paint dry for a couple of hours and spray all the parts with a layer or two of clear top-coat to protect the paint. I used [[gloss top-coat][gloss top-coat]] because the in-game render seems to be glossy. And the end result is indeed very nice. If you want, you can use flat or half-gloss top-coat. After applying the top-coat, I suggest you to leave it along for at least a couple hours, ideally a day before touching it.
-
-* Assembly
-Bottom shell:
-1. Install the LED’s. I suggest using hot glue gun to glue them in-place. Also make sure you test the LED’s before gluing them.
-1. Screw the USB breakout to the bottom shell
-1. Plug in the battery to the microcontroller
-1. Plug in the micro USB plug to the micro controller
-1. Screw the main board to the bottom shell, tuck the battery under the main board
-
-Top shell:
-1. Glue the thumstick guard into place, I used super glue
-1. Glue the LED’s into place, I used hot glue gun
-1. Glue the hanger into place (super glue)
-1. Glue the front bars (super glue)
-
-Assemble:
-1. Plug in LED’s wires to the main board
-1. Install the thumbstick
-1. Screw the top and bottom shell together
-1. Install side bars.
-
-#+caption: Installing the USB breakout board. Technically you only need to connect the +5 and GNU pins, like I did here. These two pins allows you to charge the battery through the USB port. But if you connect all four pins, you can use the USB port for uploading programs as well.
+#+CAPTION: There are three lights in the front: one head light and two smaller side lights. The head light can be used as bathroom flashlight, and the off-white side lights can be used as night lights.
 #+attr_html: :width 100%
-#+attr_latex: :width 400px
-[[./img/assemble-bottom-1.jpeg]]
+[[./img/demo-font-light.jpeg]]
 
-#+caption: Installing the main board.
+#+CAPTION: The head lamp is the charging indicator.
 #+attr_html: :width 100%
-#+attr_latex: :width 400px
-[[./img/assemble-bottom-2.jpeg]]
+[[./img/demo-head-lamp.jpeg]]
 
-* Caring on the paint
-Even though we sprayed a protective top-coat, the paint is still easily damaged: I’ve had small dents on the CQ-80 that are deep enough to reveal underling primer. I guess spray painitng will give you a thinner and more robust paint, I’m also contemplating on using auto top-coats, I’ll report back with the result.
+#+CAPTION: Bottom view, the USB port is the charging port.
+#+attr_html: :width 100%
+[[./img/demo-bottom.jpeg]]
 
-Anyway, the best way to protect the paint job is to not knock anything into it. Put it in a bag or a crystal coffin so nothing sharp can hit it.
+#+CAPTION: Compare to the in-game model. It has the charging port in the exact same spot.
+#+attr_html: :width 100%
+[[./img/bottom-render.png]]
 
-* If you don’t want the electronics
-It should be quite feasible to do away all the electronics, should you only want the plastic model and don’t care about the music controller functionality. It’ll also cut the cost by a lot. You still need the [[joystick][joystick]], just glue it to a cardboard or something, and glue the cardboard to the pole right under the joystick. I’d also reinforce the pole, eg, smudge a pile of hot glue around it.
+#+CAPTION: The signal light lights up when you tilt the joystick.
+#+attr_html: :width 100%
+[[./img/demo-signal-light.jpeg]]
 
-* Parts listing
+#+CAPTION: Side emboss.
+#+attr_html: :width 100%
+[[./img/demo-side.jpeg]]
 
-3d-printed parts (in the =stl= folder):
-- <<top shell>> Top shell
-- <<bottom shell>> Bottom shell
-- <<thumbstick>> Thumbstick
-- <<thumbstick guard>> Thumbstick guard
-- <<front bar>> Front bar
-- <<side bars>> Side bars
-- <<trademark insert>> Trademark insert
-- <<hanger>> Hanger
+#+CAPTION: Compare to the in-game model.
+#+attr_html: :width 100%
+[[./img/left-render.png]]
 
-Mechanical parts:
-- <<M2 screws>> M2[fn:m2] [[https://www.amazon.com/s?k=M2+screws+12mm&crid=1D6SZEUYTS1PO&sprefix=m2+screws+12m%2Caps%2C265&ref=nb_sb_noss_2][screws]] (8mm in length) × 4
-- M2 screws (4mm) × 4
-- <<M2 threaded inserts>> Heat-set[fn:heat-set] M2 [[https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&crid=2D95DDIXZW9M3&sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&ref=nb_sb_noss][threaded inserts]] (4mm × 3.5mm) (length × outer diameter) × 8
+#+CAPTION: The tail, you can see the card slot.
+#+attr_html: :width 100%
+[[./img/demo-tail.jpeg]]
 
-Printed PCB boards:
-- <<main board>> Main board (=board.zip=)
-- <<usb breakout>> USB breakout (=usb_breakout.zip=)
+#+CAPTION: A close up of the joystick.
+#+attr_html: :width 100%
+[[./img/demo-top-close-up.jpeg]]
 
-Electronic parts:
-- <<feather nrf52>> [[https://www.adafruit.com/product/3406][Adafruit Feather nRF52 Bluefruit LE (nRF52832)]] (nRF52840 should also work if you know how to modify the program)
-- <<lipo battery>> [[https://www.adafruit.com/product/2011][Adafruit Lithium Ion Battery 3.7V 2000mAh]]
-- <<joystick>> [[https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&crid=1QX1NDCLCAWQT&sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&ref=nb_sb_noss_1][Alps RKJXV1224 joystick]] (aka switch pro controller replacement joystick)
-- <<usb type-A connector>> [[https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA][Molex USB 2.0 type-A female vertical mount connector]] (product number ‎1050570001‎)
-- <<misco-USB connector>> [[https://www.amazon.com/gp/product/B07G5ZY7MH/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1][USB Micro-B connector]] (anything similar-sized should work)
-- Micro USB to USB cable (for uploading the program to the microcontroller)
-- [[https://www.amazon.com/s?k=USB+male+to+USB+male&ref=nb_sb_noss][USB male to USB male cable]] (for charging CQ-80)
+Here is a demo of the playback control. The controls are
 
-Electronic consumables:
-- <<LED’s>> [[https://www.amazon.com/s?k=5mm+led&crid=1DRG7DU8VXT7J&sprefix=5mm+led%2Caps%2C145&ref=nb_sb_noss_1][5mm red LED]] × 1 (top light)
-- [[https://www.amazon.com/s?k=3mm+led&crid=4JJ4EKJP17Q3&sprefix=3mm+le%2Caps%2C131&ref=nb_sb_noss_2][3mm green LED]]  × 1 (front lamp)
-- [[https://www.amazon.com/s?k=8mm+led&crid=FJQQ6UVY7NAI&sprefix=8mm+led%2Caps%2C140&ref=nb_sb_noss_1][8mm white LED]] × 1 (head light)
-- [[https://www.amazon.com/s?k=5mm+led&crid=1DRG7DU8VXT7J&sprefix=5mm+led%2Caps%2C145&ref=nb_sb_noss_1][5mm warm-white LED]] × 2 (side lights)
-- <<resistors>> [[https://www.amazon.com/s?k=resistors&crid=1G02OHEC2Z4WT&sprefix=resistors%2Caps%2C129&ref=nb_sb_noss_1][Resistors]], 110Ω × 4, 10KΩ × 1. The resistance doesn’t have to be exact, 110Ω ones can be replaced by any resistor in the range of 50 to 300 ohms, and the 10K one can be replaced by any in the 10K-100K range.
-- <<jumper wires>> [[https://www.amazon.com/s?k=jumper+wires&crid=JYYBJ45HZ3F3&sprefix=jumper+wire%2Caps%2C144&ref=nb_sb_noss_1][Jumper wires (female)]] (alternatively you can buy normal wires and [[https://www.amazon.com/s?k=dupont+pins&crid=2OT1FVWMB4KVE&sprefix=dupon+pins%2Caps%2C181&ref=nb_sb_noss][Dupont pins]] and make jump wires yourself)
-- <<header pins>> [[https://www.amazon.com/s?k=header+pins&ref=nb_sb_noss][Header pins]]
+| Press & hold    | Bluetooth pairing     |
+| Press           | On/Off                |
+| Tilt up         | Switch head lights    |
+| Tilt down       | Play/Pause            |
+| Tile left/right | Skip forward/backward |
+| Rotate          | Volume up/down        |
 
-<<painting>>
-Painting:
-- <<Pallid Wych Flesh>> [[https://www.games-workshop.com/en-US/Layer-Pallid-Wych-Flesh-2019][Citadel Colour, Layer, Pallid Wych Flesh]]
-- <<Rakarth Flesh>> [[https://www.games-workshop.com/en-US/Base-Rakarth-Flesh-2019][Citadel Colour, Base, Rakarth Flesh]]
-- <<Violet Red>> [[https://acrylicosvallejo.com/en/product/hobby/model-color-en/violet-red-70812/][Vallejo Model Color 70.812 Violet Red]]
-- <<Carmine Red>> (optional) [[https://acrylicosvallejo.com/en/product/hobby/model-color-en/carmine-red-70908/][Vallejo Model Color 70.908 Carmine Red]]
-- <<acrylic putty>> [[https://acrylicosvallejo.com/en/product/crafts/auxiliaries-decorative-arts/plastic-putty/][Vallejo 70.401 Plastic Putty]]
-- <<light grey primer>> [[https://www.tamiyausa.com/shop/finishing/fine-surface-primer-l/][Tamiya Fine Surface Primer Light Grey Spray Can]]
-- <<gloss top-coat>> [[https://www.mr-hobby.com/en/product2/category_11/272.html][Mr. Super Clear UV Cut Gloss Top Coat]] (Tamiya or Mr. Hobby doesn’t matter, any top-coat should work)
-- Sanding sponge I mentioned earlier, should be easily found in local hobby stores
+#+begin_export html
+<video controls width="50%">
+<source src="./img/demo-playback.mp4" type="video/mp4">
+</video>
+#+end_export
 
-Tools:
-- <<soldering iron>> Soldering kit ([[https://www.amazon.com/s?k=soldering+iron&crid=3UY9KIX3YB4JO&sprefix=soldering+iron%2Caps%2C133&ref=nb_sb_noss_1][iron & tin]], [[https://www.amazon.com/s?k=third+hand+soldering&crid=2EU1WDBW62822&sprefix=third+hand+soldering%2Caps%2C189&ref=nb_sb_noss_1][third hand]]) (for soldering and installing threaded inserts)
-- <<heat-set insert tip>> (optional) [[https://www.amazon.com/dp/B08B17VQLD?psc=1&ref=ppx_yo2ov_dt_b_product_details][Heat-set insert tip]] (for installing threaded inserts)
-- Acrylic brushes
-
-[fn:m2] “M2” is the “size” of the screw, read /[[https://www.hubs.com/knowledge-base/thread-types/][Thread types: The practical engineer’s guide]]/ for some explanations.
-
-[fn:heat-set] “Heat-set” means we melt the surrounding plastic and cool it to install the insert.
 
 # Local Variables:
 # org-html-postamble: nil
