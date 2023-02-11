@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-02-10 Fri 17:33 -->
+<!-- 2023-02-10 Fri 18:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CQ-80 Terminal (NAMACO端末) Replica</title>
@@ -202,28 +202,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org155909e">1. Overview</a></li>
-<li><a href="#org37c1152">2. 3d-printed parts</a></li>
-<li><a href="#orgacccdb5">3. Fitting the parts</a></li>
-<li><a href="#orgb0e262d">4. Install threaded inserts to the printed parts</a></li>
-<li><a href="#org443106f">5. Uploading the program to the microcontroller</a></li>
-<li><a href="#orgbda644b">6. Printing PCB boards</a></li>
-<li><a href="#org6c4c9f7">7. Soldering electronic parts</a></li>
-<li><a href="#orgadc9fff">8. Painting the parts</a>
+<li><a href="#orga3fc208">1. Overview</a></li>
+<li><a href="#org5f4008e">2. Download files</a></li>
+<li><a href="#org81c4742">3. 3d-printed parts</a></li>
+<li><a href="#orga7fbc26">4. Fitting the parts</a></li>
+<li><a href="#orga305ab0">5. Install threaded inserts to the printed parts</a></li>
+<li><a href="#org778a6f3">6. Uploading the program to the microcontroller</a></li>
+<li><a href="#orga2182bb">7. Printing PCB boards</a></li>
+<li><a href="#org386df20">8. Soldering electronic parts</a></li>
+<li><a href="#orgf3c2ccd">9. Painting the parts</a>
 <ul>
-<li><a href="#org86ee768">8.1. Materials</a></li>
-<li><a href="#orgf9a154c">8.2. Steps for painting</a></li>
+<li><a href="#orgfff3c2b">9.1. Materials</a></li>
+<li><a href="#orga5d8d90">9.2. Steps for painting</a></li>
 </ul>
 </li>
-<li><a href="#org0612b83">9. Assemble</a></li>
-<li><a href="#org1bf87f8">10. If you don’t want the electronics</a></li>
-<li><a href="#org620b6c0">11. Parts listing</a></li>
+<li><a href="#org88561a4">10. Assemble</a></li>
+<li><a href="#org8ce4fae">11. If you don’t want the electronics</a></li>
+<li><a href="#orge801877">12. Parts listing</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org155909e" class="outline-2">
-<h2 id="org155909e"><span class="section-number-2">1.</span> Overview</h2>
+<div id="outline-container-orga3fc208" class="outline-2">
+<h2 id="orga3fc208"><span class="section-number-2">1.</span> Overview</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The CQ-80 replica is made of 3d-printed parts and (mostly) off-the-shelf electronic parts. The electronics allow it to connect to a computer via Bluetooth and control music playback. (It’s possible to exclude electronics, see below.)
@@ -232,14 +233,27 @@ The CQ-80 replica is made of 3d-printed parts and (mostly) off-the-shelf electro
 <p>
 To make the replica, you need to 3d-print the parts, paint them, buy all the electronics, solder them, upload a program to the microcontroller, and finally assemble everything together. I’d say that fitting the parts and painting them are the most difficult and time-consuming steps in the whole process.
 </p>
+
+<p>
+Disclaimer: I’m an utter armature on 3d modeling, electronics and model painting. So dispite my best effort, there are short-comings all over the place. If you have any suggestion/feedback, I appreciate them very much.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org37c1152" class="outline-2">
-<h2 id="org37c1152"><span class="section-number-2">2.</span> 3d-printed parts</h2>
+<div id="outline-container-org5f4008e" class="outline-2">
+<h2 id="org5f4008e"><span class="section-number-2">2.</span> Download files</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-There are eight parts: the top and bottom shells, thumbstick and thumbstick guard, front bar, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in <code>/step</code> and <code>/dae</code> directories. <code>step</code> and <code>dae</code> are two 3d model file formats, any 3d printing service accepts at least one of the two. I combined smaller parts together into a single file, so you only need to print three main parts: the top shell, the bottom shell, and the small parts combined.
+Download model and PCB files from here: TODO (it just links to the GitHub release). Unpack it and you should see one directory, <code>stl</code>, and two zip files, <code>board.zip</code>, <code>usb_breakout.zip</code>. The <code>stl</code> directory contains 3d model files, and <code>board.zip</code> and <code>usb_breakout.zip</code> are files for printing the PCB board. Their use are explained as we go through each step.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org81c4742" class="outline-2">
+<h2 id="org81c4742"><span class="section-number-2">3.</span> 3d-printed parts</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+There are eight parts: the top and bottom shells, thumbstick and thumbstick guard, front bar, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in the <code>stl</code> folder. I combined smaller parts together into a single file, so you only need to print three main parts: the top shell, the bottom shell, and the small parts combined.
 </p>
 
 <p>
@@ -247,7 +261,7 @@ I made the trade mark insert a separate piece, so you can design a custom insert
 </p>
 
 
-<div id="org0296c93" class="figure">
+<div id="org22a0b84" class="figure">
 <p><img src="./img/parts-expl.jpeg" alt="parts-expl.jpeg" width="100%" />
 </p>
 <p><span class="figure-number">Figure 1: </span>3d-printed parts and their canonical name</p>
@@ -267,9 +281,9 @@ I used pcbway.com for printing, they so much cheaper than sites like Shapeways a
 </div>
 </div>
 
-<div id="outline-container-orgacccdb5" class="outline-2">
-<h2 id="orgacccdb5"><span class="section-number-2">3.</span> Fitting the parts</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orga7fbc26" class="outline-2">
+<h2 id="orga7fbc26"><span class="section-number-2">4.</span> Fitting the parts</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 Once you receive the parts, you need to sand/file them a bit here and their so everything fits together. The fitting in the digital model is pretty tight, since you can always sand down tight fits but it’s really hard to fix a loose fit.
 </p>
@@ -280,15 +294,15 @@ You can get some small files (round, square and flat) from local hobby stores, t
 </div>
 </div>
 
-<div id="outline-container-orgb0e262d" class="outline-2">
-<h2 id="orgb0e262d"><span class="section-number-2">4.</span> Install threaded inserts to the printed parts</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orga305ab0" class="outline-2">
+<h2 id="orga305ab0"><span class="section-number-2">5.</span> Install threaded inserts to the printed parts</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Out of the eight parts, top and bottom shell are fastened together by two screws, thumbstick guard and hanger are glued to the top shell, and trademark insert and side bars are friction-fit. The PCB board and USB breakout board are screwed into the bottom shell.
 </p>
 
 <p>
-Therefore, we need to install threaded inserts to top and bottom shells. The parts are designed to use <a href="#org0b813ab">M2 screws</a> and <a href="#org40cab57">M2 threaded inserts</a>. Here is a tutorial on installing heat-set inserts: <i><a href="https://markforged.com/resources/blog/heat-set-inserts">Using Heat Set Inserts</a></i>. You need <a href="#orge3de5a5">iron</a> and <a href="#orga9ff1ba">heat-set insert tip</a> (or just the iron tip, it works ok). <i>Do not press too hard</i> when installing threaded inserts: the resin is strong but brittle, and is heat-resistant, so pressing too hard will break it. Be patient and press it in little by little.
+Therefore, we need to install threaded inserts to top and bottom shells. The parts are designed to use <a href="#org8261411">M2 screws</a> and <a href="#orge28fcc7">M2 threaded inserts</a>. Here is a tutorial on installing heat-set inserts: <i><a href="https://markforged.com/resources/blog/heat-set-inserts">Using Heat Set Inserts</a></i>. You need <a href="#org8a3c615">iron</a> and <a href="#orgab1eddf">heat-set insert tip</a> (or just the iron tip, it works ok). <i>Do not press too hard</i> when installing threaded inserts: the resin is strong but brittle, and is heat-resistant, so pressing too hard will break it. Be patient and press it in little by little.
 </p>
 
 <p>
@@ -296,14 +310,14 @@ Install inserts on these places:
 </p>
 
 
-<div id="org98d585e" class="figure">
+<div id="org81ed0b9" class="figure">
 <p><img src="./img/top-expl.jpeg" alt="top-expl.jpeg" width="100%" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Top shell</p>
 </div>
 
 
-<div id="org633a228" class="figure">
+<div id="org035238a" class="figure">
 <p><img src="./img/bottom-expl.jpeg" alt="bottom-expl.jpeg" width="100%" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Bottom shell</p>
@@ -311,11 +325,11 @@ Install inserts on these places:
 </div>
 </div>
 
-<div id="outline-container-org443106f" class="outline-2">
-<h2 id="org443106f"><span class="section-number-2">5.</span> Uploading the program to the microcontroller</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org778a6f3" class="outline-2">
+<h2 id="org778a6f3"><span class="section-number-2">6.</span> Uploading the program to the microcontroller</h2>
+<div class="outline-text-2" id="text-6">
 <p>
-You need a computer, a micro-usb cable and the <a href="#org2207e12">Adafruit microcontroller</a>.
+You need a computer, a micro-usb cable and the <a href="#org9557bc3">Adafruit microcontroller</a>.
 </p>
 
 <ol class="org-ol">
@@ -326,34 +340,34 @@ You need a computer, a micro-usb cable and the <a href="#org2207e12">Adafruit mi
 </div>
 </div>
 
-<div id="outline-container-orgbda644b" class="outline-2">
-<h2 id="orgbda644b"><span class="section-number-2">6.</span> Printing PCB boards</h2>
-<div class="outline-text-2" id="text-6">
-<p>
-There are two boards to print, the main board (<code>/board</code>) and the USB breakout board (<code>/usb_breakout</code>). I used <a href="https://oshpark.com/">OSHPARK</a> to print PCB boards. There are cheaper providers that I haven’t tried like <a href="https://www.pcbway.com/">pcbway</a> and <a href="https://jlcpcb.com/">jlcpcb</a>.
-</p>
-
-<p>
-Take OSHPARK as an example, go onto their website and click “browse for files”, and choose the zip file for the board, eg, <code>/board/board.zip</code> or <code>usb_breakout/usb_breakout.zip</code>. Then hit continue all the way. Use USPS for shipping ;-)
-</p>
-</div>
-</div>
-
-<div id="outline-container-org6c4c9f7" class="outline-2">
-<h2 id="org6c4c9f7"><span class="section-number-2">7.</span> Soldering electronic parts</h2>
+<div id="outline-container-orga2182bb" class="outline-2">
+<h2 id="orga2182bb"><span class="section-number-2">7.</span> Printing PCB boards</h2>
 <div class="outline-text-2" id="text-7">
+<p>
+There are two boards to print, the main board (<code>board.zip</code>) and the USB breakout board (<code>usb_breakout.zip</code>). I used <a href="https://oshpark.com/">OSHPARK</a> to print PCB boards. There are cheaper providers that I haven’t tried like <a href="https://www.pcbway.com/">pcbway</a> and <a href="https://jlcpcb.com/">jlcpcb</a>.
+</p>
+
+<p>
+Take OSHPARK as an example, go onto their website and click “browse for files”, and choose the zip file for the board, upload it, then hit continue all the way. Use USPS for shipping ;-)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org386df20" class="outline-2">
+<h2 id="org386df20"><span class="section-number-2">8.</span> Soldering electronic parts</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 <i>Test before soldering any parts!</i> Test that the LED’s and resistors work! You’ll be in a world of pain if you find out a resister is bad <i>after</i> you’ve soldered it to the board.
 </p>
 
 <ol class="org-ol">
-<li>Solder the microcontroller to the <a href="#orgefb272e">main board</a></li>
-<li>Solder the <a href="#org4bbc157">joystick</a> to the main board (you need to clip the two nubs under the joystick part because I forgot to create holes on the pcb board design)</li>
-<li>Solder the <a href="#org68219c1">USB female connector</a> to the <a href="#orgca8ded2">USB breakout board</a></li>
-<li>Connect the <a href="#orgca8ded2">USB breakout board</a> to the <a href="#org351625a">micro-USB connector</a> (the square hole on the breakout is ground)</li>
-<li>Solder <a href="#orga040283">resistors</a> to the main board (for the LED’s anything around 100ω is fine, for the battery detection, use something large like 10kω)</li>
-<li>Solder <a href="#orgc5e5e9f">header pins</a> for the <a href="#orgc9d37f7">LED’s</a> to the main board</li>
-<li>Solder some <a href="#org7307639">jumper wires</a> to the LED’s and connect them to the header pins on the main board.</li>
+<li>Solder the microcontroller to the <a href="#orgb8821e8">main board</a></li>
+<li>Solder the <a href="#orgcd00497">joystick</a> to the main board (you need to clip the two nubs under the joystick part because I forgot to create holes on the pcb board design)</li>
+<li>Solder the <a href="#orgefccffc">USB female connector</a> to the <a href="#org8c9eade">USB breakout board</a></li>
+<li>Connect the <a href="#org8c9eade">USB breakout board</a> to the <a href="#org6002a64">micro-USB connector</a> (the square hole on the breakout is ground)</li>
+<li>Solder <a href="#org0afc726">resistors</a> to the main board (for the LED’s anything around 100ω is fine, for the battery detection, use something large like 10kω)</li>
+<li>Solder <a href="#orgb830cc0">header pins</a> for the <a href="#org9eaafba">LED’s</a> to the main board</li>
+<li>Solder some <a href="#org9d97525">jumper wires</a> to the LED’s and connect them to the header pins on the main board.</li>
 </ol>
 
 <p>
@@ -361,14 +375,14 @@ Of course, you can use LED’s of whatever color you like, just make sure the di
 </p>
 
 
-<div id="orgc3f71d2" class="figure">
+<div id="orga6bbe96" class="figure">
 <p><img src="./img/board-expl.jpeg" alt="board-expl.jpeg" width="100%" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Main board</p>
 </div>
 
 
-<div id="org889f980" class="figure">
+<div id="orgb6cc816" class="figure">
 <p><img src="./img/usb-expl.jpeg" alt="usb-expl.jpeg" width="100%" />
 </p>
 <p><span class="figure-number">Figure 5: </span>USB board.</p>
@@ -376,15 +390,15 @@ Of course, you can use LED’s of whatever color you like, just make sure the di
 </div>
 </div>
 
-<div id="outline-container-orgadc9fff" class="outline-2">
-<h2 id="orgadc9fff"><span class="section-number-2">8.</span> Painting the parts</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orgf3c2ccd" class="outline-2">
+<h2 id="orgf3c2ccd"><span class="section-number-2">9.</span> Painting the parts</h2>
+<div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org86ee768" class="outline-3">
-<h3 id="org86ee768"><span class="section-number-3">8.1.</span> Materials</h3>
-<div class="outline-text-3" id="text-8-1">
+<div id="outline-container-orgfff3c2b" class="outline-3">
+<h3 id="orgfff3c2b"><span class="section-number-3">9.1.</span> Materials</h3>
+<div class="outline-text-3" id="text-9-1">
 <p>
-I don’t have aerospray so I hand-painted the parts. I tried to use paints that are allegedly friendly to hand-painting. You can find a list of the paints I used below in the <a href="#orgfa2a5c6">painting</a> section.
+I don’t have aerospray so I hand-painted the parts. I tried to use paints that are allegedly friendly to hand-painting. You can find a list of the paints I used below in the <a href="#org5001d76">painting</a> section.
 </p>
 
 <p>
@@ -392,7 +406,7 @@ If you don’t want to hand-paint and don’t have aerospray, you can get some s
 </p>
 
 <p>
-I used <a href="#org040376c">Pallid Wych Flesh</a> (off-white) for the primary color of the top shell, and <a href="#org040376c">Pallid Wych Flesh</a> mixing in a little bit <a href="#org2b0879a">Rakarth Flesh</a> (brownish) for the bottom shell and the alt color on the top shell. For the violet red color (thumbstick, etc), I mixed <a href="#org8b49207">Violet Red</a> plus a little bit of <a href="#org400cd4f">Carmine Red</a>. Carmine Red is probably optional, if you don’t mind your thumbstick to be a bit more purple than the official one.
+I used <a href="#org192301e">Pallid Wych Flesh</a> (off-white) for the primary color of the top shell, and <a href="#org192301e">Pallid Wych Flesh</a> mixing in a little bit <a href="#org2f1f37d">Rakarth Flesh</a> (brownish) for the bottom shell and the alt color on the top shell. For the violet red color (thumbstick, etc), I mixed <a href="#orgb007597">Violet Red</a> plus a little bit of <a href="#org5edfb4c">Carmine Red</a>. Carmine Red is probably optional, if you don’t mind your thumbstick to be a bit more purple than the official one.
 </p>
 
 <p>
@@ -412,19 +426,19 @@ I really don’t remember&#x2026; Luckily the two colors that requires mixing ha
 </div>
 </div>
 
-<div id="outline-container-orgf9a154c" class="outline-3">
-<h3 id="orgf9a154c"><span class="section-number-3">8.2.</span> Steps for painting</h3>
-<div class="outline-text-3" id="text-8-2">
+<div id="outline-container-orga5d8d90" class="outline-3">
+<h3 id="orga5d8d90"><span class="section-number-3">9.2.</span> Steps for painting</h3>
+<div class="outline-text-3" id="text-9-2">
 <p>
 I learned this from watching accumulatively ~4.78 hrs of gunpla and 3d printing videos on YouTube, so don’t take my word for everything.
 </p>
 
 <p>
-But anyway, you need to first fill the gaps like print-lines or other imperfections with <a href="#org0804c53">acrylic putty</a>, then sand the surfaces smooth. It should be very smooth to the touch, because any small imperfections you can’t see right now will show when you put on paint. You can get some <a href="./photos/sanding-sponge.jpeg">sanding sponge</a> which are very handy when sanding small models like this (you can find them at a local hobby store). I suggest you leave the putty to dry for at least a couple hours, ideally overnight, before sanding. Just casually put on some putty, let it dry, sand it next day, add more putty if necessary, and repeat. Take it slow and easy. Don’t rush it or get it done in one afternoon. This advice applies to the following steps as well.
+But anyway, you need to first fill the gaps like print-lines or other imperfections with <a href="#orga4bc4e9">acrylic putty</a>, then sand the surfaces smooth. It should be very smooth to the touch, because any small imperfections you can’t see right now will show when you put on paint. You can get some <a href="./photos/sanding-sponge.jpeg">sanding sponge</a> which are very handy when sanding small models like this (you can find them at a local hobby store). I suggest you leave the putty to dry for at least a couple hours, ideally overnight, before sanding. Just casually put on some putty, let it dry, sand it next day, add more putty if necessary, and repeat. Take it slow and easy. Don’t rush it or get it done in one afternoon. This advice applies to the following steps as well.
 </p>
 
 <p>
-Once the surface is smooth, prime your parts with a <a href="#orgad825af">light grey primer</a>. For grey parts this is all they need. For other parts, the next step is to apply paint.
+Once the surface is smooth, prime your parts with a <a href="#org0200545">light grey primer</a>. For grey parts this is all they need. For other parts, the next step is to apply paint.
 </p>
 
 <p>
@@ -432,15 +446,15 @@ I suggest you first watch some hand-painting gunpla/miniature tutorials on YouTu
 </p>
 
 <p>
-Finally, let the paint dry for a couple of hours and spray all the parts with a layer or two of clear top-coat to protect the paint. I used <a href="#org8e79765">gloss top-coat</a> because the in-game render seems to be glossy. And the end result is indeed very nice. If you want, you can use flat or half-gloss top-coat. After applying the top-coat, I suggest you to leave it along for at least a couple hours, ideally a day before touching it.
+Finally, let the paint dry for a couple of hours and spray all the parts with a layer or two of clear top-coat to protect the paint. I used <a href="#org1dc55ba">gloss top-coat</a> because the in-game render seems to be glossy. And the end result is indeed very nice. If you want, you can use flat or half-gloss top-coat. After applying the top-coat, I suggest you to leave it along for at least a couple hours, ideally a day before touching it.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0612b83" class="outline-2">
-<h2 id="org0612b83"><span class="section-number-2">9.</span> Assemble</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-org88561a4" class="outline-2">
+<h2 id="org88561a4"><span class="section-number-2">10.</span> Assemble</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 Bottom shell:
 </p>
@@ -473,74 +487,74 @@ Assemble:
 </ol>
 
 
-<div id="org6729974" class="figure">
+<div id="orgce00d0f" class="figure">
 <p><img src="./img/assemble-bottom-1.jpeg" alt="assemble-bottom-1.jpeg" width="100%" />
 </p>
-<p><span class="figure-number">Figure 6: </span>Install the USB breakout board, technically you only need to connect the +5 and GNU pins, like I did here. These two pins allows you to charge the battery through the USB port. But if you connect all four pins, you can use the USB port for uploading programs as well.</p>
+<p><span class="figure-number">Figure 6: </span>Installing the USB breakout board. Technically you only need to connect the +5 and GNU pins, like I did here. These two pins allows you to charge the battery through the USB port. But if you connect all four pins, you can use the USB port for uploading programs as well.</p>
 </div>
 
 
-<div id="org4394a5d" class="figure">
+<div id="org35a9f5a" class="figure">
 <p><img src="./img/assemble-bottom-2.jpeg" alt="assemble-bottom-2.jpeg" width="100%" />
 </p>
-<p><span class="figure-number">Figure 7: </span>Install the main board.</p>
+<p><span class="figure-number">Figure 7: </span>Installing the main board.</p>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org1bf87f8" class="outline-2">
-<h2 id="org1bf87f8"><span class="section-number-2">10.</span> If you don’t want the electronics</h2>
-<div class="outline-text-2" id="text-10">
-<p>
-It should be quite feasible to do away all the electronics, should you only want the plastic model and don’t care about the music controller functionality. It’ll also cut the cost by a lot. You still need the <a href="#org4bbc157">joystick</a>, just glue it to a cardboard or something, and glue the cardboard to the pole right under the joystick. I’d also reinforce the pole, eg, smudge a pile of hot glue around it.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org620b6c0" class="outline-2">
-<h2 id="org620b6c0"><span class="section-number-2">11.</span> Parts listing</h2>
+<div id="outline-container-org8ce4fae" class="outline-2">
+<h2 id="org8ce4fae"><span class="section-number-2">11.</span> If you don’t want the electronics</h2>
 <div class="outline-text-2" id="text-11">
 <p>
-3d-printed parts (find under <code>/step</code> or <code>/dae</code>):
+It should be quite feasible to do away all the electronics, should you only want the plastic model and don’t care about the music controller functionality. It’ll also cut the cost by a lot. You still need the <a href="#orgcd00497">joystick</a>, just glue it to a cardboard or something, and glue the cardboard to the pole right under the joystick. I’d also reinforce the pole, eg, smudge a pile of hot glue around it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge801877" class="outline-2">
+<h2 id="orge801877"><span class="section-number-2">12.</span> Parts listing</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+3d-printed parts (in the <code>stl</code> folder):
 </p>
 <ul class="org-ul">
-<li><a id="orge5b1d29"></a> Top shell</li>
-<li><a id="org58be9f8"></a> Bottom shell</li>
-<li><a id="orgc9555f0"></a> Thumbstick</li>
-<li><a id="org31502cc"></a> Thumbstick guard</li>
-<li><a id="org4f131fe"></a> Front bar</li>
-<li><a id="org9c01a18"></a> Side bars</li>
-<li><a id="org9979073"></a> Trademark insert</li>
-<li><a id="org2bc81fe"></a> Hanger</li>
+<li><a id="org6b240a5"></a> Top shell</li>
+<li><a id="org0dda22b"></a> Bottom shell</li>
+<li><a id="orgc860bb1"></a> Thumbstick</li>
+<li><a id="org5b1620a"></a> Thumbstick guard</li>
+<li><a id="orga7066c3"></a> Front bar</li>
+<li><a id="org959abda"></a> Side bars</li>
+<li><a id="orgd5aba2c"></a> Trademark insert</li>
+<li><a id="orgb5229fd"></a> Hanger</li>
 </ul>
 
 <p>
 Mechanical parts:
 </p>
 <ul class="org-ul">
-<li><a id="org0b813ab"></a> M2<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> <a href="https://www.amazon.com/s?k=M2+screws+12mm&amp;crid=1D6SZEUYTS1PO&amp;sprefix=m2+screws+12m%2Caps%2C265&amp;ref=nb_sb_noss_2">screws</a> (8mm in length) × 4</li>
+<li><a id="org8261411"></a> M2<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> <a href="https://www.amazon.com/s?k=M2+screws+12mm&amp;crid=1D6SZEUYTS1PO&amp;sprefix=m2+screws+12m%2Caps%2C265&amp;ref=nb_sb_noss_2">screws</a> (8mm in length) × 4</li>
 <li>M2 screws (4mm) × 4</li>
-<li><a id="org40cab57"></a> Heat-set<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> M2 <a href="https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&amp;crid=2D95DDIXZW9M3&amp;sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&amp;ref=nb_sb_noss">threaded inserts</a> (4mm × 3.5mm) (length × outer diameter) × 8</li>
+<li><a id="orge28fcc7"></a> Heat-set<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> M2 <a href="https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&amp;crid=2D95DDIXZW9M3&amp;sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&amp;ref=nb_sb_noss">threaded inserts</a> (4mm × 3.5mm) (length × outer diameter) × 8</li>
 </ul>
 
 <p>
 Printed PCB boards:
 </p>
 <ul class="org-ul">
-<li><a id="orgefb272e"></a> Main board (<code>/board/upload.zip</code>)</li>
-<li><a id="orgca8ded2"></a> USB breakout (<code>/usb_breakout/upload.zip</code>)</li>
+<li><a id="orgb8821e8"></a> Main board (<code>board.zip</code>)</li>
+<li><a id="org8c9eade"></a> USB breakout (<code>usb_breakout.zip</code>)</li>
 </ul>
 
 <p>
 Electronic parts:
 </p>
 <ul class="org-ul">
-<li><a id="org2207e12"></a> <a href="https://www.adafruit.com/product/3406">Adafruit Feather nRF52 Bluefruit LE (nRF52832)</a> (nRF52840 should also work if you know how to modify the program)</li>
-<li><a id="org411b0e5"></a> <a href="https://www.adafruit.com/product/2011">Adafruit Lithium Ion Battery 3.7V 2000mAh</a></li>
-<li><a id="org4bbc157"></a> <a href="https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&amp;crid=1QX1NDCLCAWQT&amp;sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&amp;ref=nb_sb_noss_1">Alps RKJXV1224 joystick</a> (aka switch pro controller replacement joystick)</li>
-<li><a id="org68219c1"></a> <a href="https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA">Molex USB 2.0 type-A female vertical mount connector</a> (product number ‎1050570001‎)</li>
-<li><a id="org351625a"></a> <a href="https://www.amazon.com/gp/product/B07G5ZY7MH/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&amp;psc=1">USB Micro-B connector</a> (anything similar-sized should work)</li>
+<li><a id="org9557bc3"></a> <a href="https://www.adafruit.com/product/3406">Adafruit Feather nRF52 Bluefruit LE (nRF52832)</a> (nRF52840 should also work if you know how to modify the program)</li>
+<li><a id="orga7d4545"></a> <a href="https://www.adafruit.com/product/2011">Adafruit Lithium Ion Battery 3.7V 2000mAh</a></li>
+<li><a id="orgcd00497"></a> <a href="https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&amp;crid=1QX1NDCLCAWQT&amp;sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&amp;ref=nb_sb_noss_1">Alps RKJXV1224 joystick</a> (aka switch pro controller replacement joystick)</li>
+<li><a id="orgefccffc"></a> <a href="https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA">Molex USB 2.0 type-A female vertical mount connector</a> (product number ‎1050570001‎)</li>
+<li><a id="org6002a64"></a> <a href="https://www.amazon.com/gp/product/B07G5ZY7MH/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&amp;psc=1">USB Micro-B connector</a> (anything similar-sized should work)</li>
 <li>Micro USB to USB cable (for uploading the program to the microcontroller)</li>
 <li><a href="https://www.amazon.com/s?k=USB+male+to+USB+male&amp;ref=nb_sb_noss">USB male to USB male cable</a> (for charging CQ-80)</li>
 </ul>
@@ -549,27 +563,27 @@ Electronic parts:
 Electronic consumables:
 </p>
 <ul class="org-ul">
-<li><a id="orgc9d37f7"></a> <a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm red LED</a> × 1 (top light)</li>
+<li><a id="org9eaafba"></a> <a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm red LED</a> × 1 (top light)</li>
 <li><a href="https://www.amazon.com/s?k=3mm+led&amp;crid=4JJ4EKJP17Q3&amp;sprefix=3mm+le%2Caps%2C131&amp;ref=nb_sb_noss_2">3mm green LED</a>  × 1 (front lamp)</li>
 <li><a href="https://www.amazon.com/s?k=8mm+led&amp;crid=FJQQ6UVY7NAI&amp;sprefix=8mm+led%2Caps%2C140&amp;ref=nb_sb_noss_1">8mm white LED</a> × 1 (head light)</li>
 <li><a href="https://www.amazon.com/s?k=5mm+led&amp;crid=1DRG7DU8VXT7J&amp;sprefix=5mm+led%2Caps%2C145&amp;ref=nb_sb_noss_1">5mm warm-white LED</a> × 2 (side lights)</li>
-<li><a id="orga040283"></a> <a href="https://www.amazon.com/s?k=resistors&amp;crid=1G02OHEC2Z4WT&amp;sprefix=resistors%2Caps%2C129&amp;ref=nb_sb_noss_1">Resistors</a>, 110Ω × 4, 10KΩ × 1. The resistance doesn’t have to be exact, 110Ω ones can be replaced by any resistor in the range of 50 to 300 ohms, and the 10K one can be replaced by any in the 10K-100K range.</li>
-<li><a id="org7307639"></a> <a href="https://www.amazon.com/s?k=jumper+wires&amp;crid=JYYBJ45HZ3F3&amp;sprefix=jumper+wire%2Caps%2C144&amp;ref=nb_sb_noss_1">Jumper wires (female)</a> (alternatively you can buy normal wires and <a href="https://www.amazon.com/s?k=dupont+pins&amp;crid=2OT1FVWMB4KVE&amp;sprefix=dupon+pins%2Caps%2C181&amp;ref=nb_sb_noss">Dupont pins</a> and make jump wires yourself)</li>
-<li><a id="orgc5e5e9f"></a> <a href="https://www.amazon.com/s?k=header+pins&amp;ref=nb_sb_noss">Header pins</a></li>
+<li><a id="org0afc726"></a> <a href="https://www.amazon.com/s?k=resistors&amp;crid=1G02OHEC2Z4WT&amp;sprefix=resistors%2Caps%2C129&amp;ref=nb_sb_noss_1">Resistors</a>, 110Ω × 4, 10KΩ × 1. The resistance doesn’t have to be exact, 110Ω ones can be replaced by any resistor in the range of 50 to 300 ohms, and the 10K one can be replaced by any in the 10K-100K range.</li>
+<li><a id="org9d97525"></a> <a href="https://www.amazon.com/s?k=jumper+wires&amp;crid=JYYBJ45HZ3F3&amp;sprefix=jumper+wire%2Caps%2C144&amp;ref=nb_sb_noss_1">Jumper wires (female)</a> (alternatively you can buy normal wires and <a href="https://www.amazon.com/s?k=dupont+pins&amp;crid=2OT1FVWMB4KVE&amp;sprefix=dupon+pins%2Caps%2C181&amp;ref=nb_sb_noss">Dupont pins</a> and make jump wires yourself)</li>
+<li><a id="orgb830cc0"></a> <a href="https://www.amazon.com/s?k=header+pins&amp;ref=nb_sb_noss">Header pins</a></li>
 </ul>
 
 <p>
-<a id="orgfa2a5c6"></a>
+<a id="org5001d76"></a>
 Painting:
 </p>
 <ul class="org-ul">
-<li><a id="org040376c"></a> <a href="https://www.games-workshop.com/en-US/Layer-Pallid-Wych-Flesh-2019">Citadel Colour, Layer, Pallid Wych Flesh</a></li>
-<li><a id="org2b0879a"></a> <a href="https://www.games-workshop.com/en-US/Base-Rakarth-Flesh-2019">Citadel Colour, Base, Rakarth Flesh</a></li>
-<li><a id="org8b49207"></a> <a href="https://acrylicosvallejo.com/en/product/hobby/model-color-en/violet-red-70812/">Vallejo Model Color 70.812 Violet Red</a></li>
-<li><a id="org400cd4f"></a> (optional) <a href="https://acrylicosvallejo.com/en/product/hobby/model-color-en/carmine-red-70908/">Vallejo Model Color 70.908 Carmine Red</a></li>
-<li><a id="org0804c53"></a> <a href="https://acrylicosvallejo.com/en/product/crafts/auxiliaries-decorative-arts/plastic-putty/">Vallejo 70.401 Plastic Putty</a></li>
-<li><a id="orgad825af"></a> <a href="https://www.tamiyausa.com/shop/finishing/fine-surface-primer-l/">Tamiya Fine Surface Primer Light Grey Spray Can</a></li>
-<li><a id="org8e79765"></a> <a href="https://www.mr-hobby.com/en/product2/category_11/272.html">Mr. Super Clear UV Cut Gloss Top Coat</a> (Tamiya or Mr. Hobby doesn’t matter, any top-coat should work)</li>
+<li><a id="org192301e"></a> <a href="https://www.games-workshop.com/en-US/Layer-Pallid-Wych-Flesh-2019">Citadel Colour, Layer, Pallid Wych Flesh</a></li>
+<li><a id="org2f1f37d"></a> <a href="https://www.games-workshop.com/en-US/Base-Rakarth-Flesh-2019">Citadel Colour, Base, Rakarth Flesh</a></li>
+<li><a id="orgb007597"></a> <a href="https://acrylicosvallejo.com/en/product/hobby/model-color-en/violet-red-70812/">Vallejo Model Color 70.812 Violet Red</a></li>
+<li><a id="org5edfb4c"></a> (optional) <a href="https://acrylicosvallejo.com/en/product/hobby/model-color-en/carmine-red-70908/">Vallejo Model Color 70.908 Carmine Red</a></li>
+<li><a id="orga4bc4e9"></a> <a href="https://acrylicosvallejo.com/en/product/crafts/auxiliaries-decorative-arts/plastic-putty/">Vallejo 70.401 Plastic Putty</a></li>
+<li><a id="org0200545"></a> <a href="https://www.tamiyausa.com/shop/finishing/fine-surface-primer-l/">Tamiya Fine Surface Primer Light Grey Spray Can</a></li>
+<li><a id="org1dc55ba"></a> <a href="https://www.mr-hobby.com/en/product2/category_11/272.html">Mr. Super Clear UV Cut Gloss Top Coat</a> (Tamiya or Mr. Hobby doesn’t matter, any top-coat should work)</li>
 <li>Sanding sponge I mentioned earlier, should be easily found in local hobby stores</li>
 </ul>
 
@@ -577,8 +591,8 @@ Painting:
 Tools:
 </p>
 <ul class="org-ul">
-<li><a id="orge3de5a5"></a> Soldering kit (<a href="https://www.amazon.com/s?k=soldering+iron&amp;crid=3UY9KIX3YB4JO&amp;sprefix=soldering+iron%2Caps%2C133&amp;ref=nb_sb_noss_1">iron &amp; tin</a>, <a href="https://www.amazon.com/s?k=third+hand+soldering&amp;crid=2EU1WDBW62822&amp;sprefix=third+hand+soldering%2Caps%2C189&amp;ref=nb_sb_noss_1">third hand</a>) (for soldering and installing threaded inserts)</li>
-<li><a id="orga9ff1ba"></a> (optional) <a href="https://www.amazon.com/dp/B08B17VQLD?psc=1&amp;ref=ppx_yo2ov_dt_b_product_details">Heat-set insert tip</a> (for installing threaded inserts)</li>
+<li><a id="org8a3c615"></a> Soldering kit (<a href="https://www.amazon.com/s?k=soldering+iron&amp;crid=3UY9KIX3YB4JO&amp;sprefix=soldering+iron%2Caps%2C133&amp;ref=nb_sb_noss_1">iron &amp; tin</a>, <a href="https://www.amazon.com/s?k=third+hand+soldering&amp;crid=2EU1WDBW62822&amp;sprefix=third+hand+soldering%2Caps%2C189&amp;ref=nb_sb_noss_1">third hand</a>) (for soldering and installing threaded inserts)</li>
+<li><a id="orgab1eddf"></a> (optional) <a href="https://www.amazon.com/dp/B08B17VQLD?psc=1&amp;ref=ppx_yo2ov_dt_b_product_details">Heat-set insert tip</a> (for installing threaded inserts)</li>
 <li>Acrylic brushes</li>
 </ul>
 </div>

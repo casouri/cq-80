@@ -7,8 +7,14 @@ The CQ-80 replica is made of 3d-printed parts and (mostly) off-the-shelf electro
 
 To make the replica, you need to 3d-print the parts, paint them, buy all the electronics, solder them, upload a program to the microcontroller, and finally assemble everything together. I’d say that fitting the parts and painting them are the most difficult and time-consuming steps in the whole process.
 
+Disclaimer: I’m an utter armature on 3d modeling, electronics and model painting. So dispite my best effort, there are short-comings all over the place. If you have any suggestion/feedback, I appreciate them very much.
+
+* Download files
+
+Download model and PCB files from here: TODO (it just links to the GitHub release). Unpack it and you should see one directory, =stl=, and two zip files, =board.zip=, =usb_breakout.zip=. The =stl= directory contains 3d model files, and =board.zip= and =usb_breakout.zip= are files for printing the PCB board. Their use are explained as we go through each step.
+
 * 3d-printed parts
-There are eight parts: the top and bottom shells, thumbstick and thumbstick guard, front bar, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in =/stl= folder. I combined smaller parts together into a single file, so you only need to print three main parts: the top shell, the bottom shell, and the small parts combined.
+There are eight parts: the top and bottom shells, thumbstick and thumbstick guard, front bar, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in the =stl= folder. I combined smaller parts together into a single file, so you only need to print three main parts: the top shell, the bottom shell, and the small parts combined.
 
 I made the trade mark insert a separate piece, so you can design a custom insert and use that instead.
 
@@ -54,9 +60,9 @@ You need a computer, a micro-usb cable and the [[feather nrf52][Adafruit microco
 1. Use the Arduino IDE to open =/arduino/controller/controller.ino=, and hit the right-pointing arrow to upload the program. The board and port settings should be already set by the previous step when we test the board.
 
 * Printing PCB boards
-There are two boards to print, the main board (=/board=) and the USB breakout board (=/usb_breakout=). I used [[https://oshpark.com/][OSHPARK]] to print PCB boards. There are cheaper providers that I haven’t tried like [[https://www.pcbway.com/][pcbway]] and [[https://jlcpcb.com/][jlcpcb]].
+There are two boards to print, the main board (=board.zip=) and the USB breakout board (=usb_breakout.zip=). I used [[https://oshpark.com/][OSHPARK]] to print PCB boards. There are cheaper providers that I haven’t tried like [[https://www.pcbway.com/][pcbway]] and [[https://jlcpcb.com/][jlcpcb]].
 
-Take OSHPARK as an example, go onto their website and click “browse for files”, and choose the zip file for the board, eg, =/board/board.zip= or =usb_breakout/usb_breakout.zip=. Then hit continue all the way. Use USPS for shipping ;-)
+Take OSHPARK as an example, go onto their website and click “browse for files”, and choose the zip file for the board, upload it, then hit continue all the way. Use USPS for shipping ;-)
 
 * Soldering electronic parts
 
@@ -148,7 +154,7 @@ It should be quite feasible to do away all the electronics, should you only want
 
 * Parts listing
 
-3d-printed parts (=stl= folder):
+3d-printed parts (in the =stl= folder):
 - <<top shell>> Top shell
 - <<bottom shell>> Bottom shell
 - <<thumbstick>> Thumbstick
@@ -164,8 +170,8 @@ Mechanical parts:
 - <<M2 threaded inserts>> Heat-set[fn:heat-set] M2 [[https://www.amazon.com/s?k=M2+heat-set+threaded+insert+3.5+x+4&crid=2D95DDIXZW9M3&sprefix=m2+heat-set+threaded+insert+3.5+x+4%2Caps%2C109&ref=nb_sb_noss][threaded inserts]] (4mm × 3.5mm) (length × outer diameter) × 8
 
 Printed PCB boards:
-- <<main board>> Main board (=/board/upload.zip=)
-- <<usb breakout>> USB breakout (=/usb_breakout/upload.zip=)
+- <<main board>> Main board (=board.zip=)
+- <<usb breakout>> USB breakout (=usb_breakout.zip=)
 
 Electronic parts:
 - <<feather nrf52>> [[https://www.adafruit.com/product/3406][Adafruit Feather nRF52 Bluefruit LE (nRF52832)]] (nRF52840 should also work if you know how to modify the program)

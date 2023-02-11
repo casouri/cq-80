@@ -5,6 +5,10 @@ body {
     font-family: Charter, serif;
 }
 
+code {
+    font-size: 12pt;
+}
+
 :link, :visited {
     text-decoration: none;
     color: #4D16C4;
