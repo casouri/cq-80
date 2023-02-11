@@ -65,7 +65,6 @@ There are two boards to print, the main board (=board.zip=) and the USB breakout
 Take OSHPARK as an example, go onto their website and click “browse for files”, and choose the zip file for the board, upload it, then hit continue all the way. Use USPS for shipping ;-)
 
 * Soldering electronic parts
-
 /Test before soldering any parts!/ Test that the LED’s and resistors work! You’ll be in a world of pain if you find out a resister is bad /after/ you’ve soldered it to the board.
 
 1. Solder the microcontroller to the [[main board][main board]]
@@ -117,8 +116,7 @@ I suggest you first watch some hand-painting gunpla/miniature tutorials on YouTu
 
 Finally, let the paint dry for a couple of hours and spray all the parts with a layer or two of clear top-coat to protect the paint. I used [[gloss top-coat][gloss top-coat]] because the in-game render seems to be glossy. And the end result is indeed very nice. If you want, you can use flat or half-gloss top-coat. After applying the top-coat, I suggest you to leave it along for at least a couple hours, ideally a day before touching it.
 
-* Assemble
-
+* Assembly
 Bottom shell:
 1. Install the LED’s. I suggest using hot glue gun to glue them in-place. Also make sure you test the LED’s before gluing them.
 1. Screw the USB breakout to the bottom shell
@@ -148,6 +146,10 @@ Assemble:
 #+attr_latex: :width 400px
 [[./img/assemble-bottom-2.jpeg]]
 
+* Caring on the paint
+Even though we sprayed a protective top-coat, the paint is still easily damaged: I’ve had small dents on the CQ-80 that are deep enough to reveal underling primer. I guess spray painitng will give you a thinner and more robust paint, I’m also contemplating on using auto top-coats, I’ll report back with the result.
+
+Anyway, the best way to protect the paint job is to not knock anything into it. Put it in a bag or a crystal coffin so nothing sharp can hit it.
 
 * If you don’t want the electronics
 It should be quite feasible to do away all the electronics, should you only want the plastic model and don’t care about the music controller functionality. It’ll also cut the cost by a lot. You still need the [[joystick][joystick]], just glue it to a cardboard or something, and glue the cardboard to the pole right under the joystick. I’d also reinforce the pole, eg, smudge a pile of hot glue around it.
