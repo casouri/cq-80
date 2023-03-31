@@ -30,7 +30,7 @@ For a guide on making your own replica, visit: [[https://casouri.github.io/cq-80
 #+attr_html: :width 100%
 [[./img/demo-font-light.jpeg]]
 
-#+CAPTION: The head lamp is the charging indicator.
+#+CAPTION: The head lamp is the charging indicator. It flashes when battery level is low, lights up when charging, and shuts off when battery is full.
 #+attr_html: :width 100%
 [[./img/demo-head-lamp.jpeg]]
 

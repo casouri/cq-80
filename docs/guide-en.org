@@ -177,7 +177,7 @@ Printed PCB boards:
 
 Electronic parts:
 - <<feather nrf52>> [[https://www.adafruit.com/product/3406][Adafruit Feather nRF52 Bluefruit LE (nRF52832)]] (nRF52840 should also work if you know how to modify the program)
-- <<lipo battery>> [[https://www.adafruit.com/product/2011][Adafruit Lithium Ion Battery 3.7V 2000mAh]]
+- <<lipo battery>> [[https://www.adafruit.com/product/258][Adafruit Lithium Ion Battery 3.7V 1200mAh]]
 - <<joystick>> [[https://www.amazon.com/s?k=switch+pro+controller+replacement+joystick&crid=1QX1NDCLCAWQT&sprefix=switch+pro+controller+replacement+joystick%2Caps%2C212&ref=nb_sb_noss_1][Alps RKJXV1224 joystick]] (aka switch pro controller replacement joystick)
 - <<usb type-A connector>> [[https://www.digikey.com/en/products/detail/molex/1050570001/3045207?s=N4IgTCBcDaIOoFkAcA2A7GAtAOQCKDgCAAnwEYAGAVkrTNpPxAF0BfIA][Molex USB 2.0 type-A female vertical mount connector]] (product number ‎1050570001‎)
 - <<misco-USB connector>> [[https://www.amazon.com/gp/product/B07G5ZY7MH/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1][USB Micro-B connector]] (anything similar-sized should work)
