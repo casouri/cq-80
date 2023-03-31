@@ -4,7 +4,7 @@
 
 Custom CQ-80 terminal replica! Not only is it 100% accurate, I also added Bluetooth music playback control feature. The shell is 3d printed, and the electronics are made of off-the-shelf parts.
 
-For a guide on making your own replica, visit: [[https://casouri.github.io/cq-80/][DIY Guide for CQ-80 Replica]].
+For a guide on making your own replica, visit: [[https://casouri.github.io/cq-80/guide-en.html][DIY Guide for CQ-80 Replica]].
 
 #+CAPTION: Top view. The actual color is more grey than in the photo.
 #+attr_html: :width 100%

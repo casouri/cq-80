@@ -9,9 +9,11 @@ To make the replica, you need to 3d-print the parts, paint them, buy all the ele
 
 Disclaimer: I’m an utter armature on 3d modeling, electronics and model painting. So dispite my best effort, there are short-comings all over the place. If you have any suggestion/feedback, I appreciate them very much.
 
+NOTE!! The v3.0 (the latest) 3D models doesn’t match some of the photos below (taken from a v2.1 model), because I’ve made updates to the model but haven’t printed them yet (because reasons). But those changes are mostly minor, so it shouldn’t be a problem.
+
 * Download files
 
-Download model and PCB files from here: TODO (it just links to the GitHub release). Unpack it and you should see one directory, =stl=, and two zip files, =board.zip=, =usb_breakout.zip=. The =stl= directory contains 3d model files, and =board.zip= and =usb_breakout.zip= are files for printing the PCB board. Their use are explained as we go through each step.
+Download model and PCB files from here: TODO (it just links to the GitHub release). Unpack it and you should see two directory, =stl= ad =controller=, and two zip files, =board.zip=, =usb_breakout.zip=. The =stl= directory contains 3d model files; the =controller= directory is the Arduino program, and =board.zip= and =usb_breakout.zip= are files for printing the PCB board. Their use are explained as we go through each step.
 
 * 3d-printed parts
 There are eight parts: the top and bottom shells, thumbstick and thumbstick guard, front bar, left and right side bars, the trademark insert on the top, and the hanger at the tail. The 3d model files for them are in the =stl= folder. I combined smaller parts together into a single file, so you only need to print three main parts: the top shell, the bottom shell, and the small parts combined.
